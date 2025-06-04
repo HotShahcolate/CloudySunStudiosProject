@@ -1,17 +1,14 @@
-using UnityEngine;
+using System;
 
-public class NewScript : MonoBehaviour
+public class NewScript : MonoBehavior
 {
+	void start()
+	{
+		print("Hello");
+	}
 
-    //Start is called before the first frame update
-    private void Start()
-    {
-        print("Hello");
-    }
+	void Update()
+	{
 
-    //Update is called once per frame
-    private void Update()
-    {
-        
-    }
+	}
 }
