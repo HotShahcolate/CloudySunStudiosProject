@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewScript : MonoBehavior
+public class NewScript : MonoBehaviour
 {
     private void Start()
     {
@@ -9,7 +9,6 @@ public class NewScript : MonoBehavior
 
     private void Update()
     {
-
     }
 }
 
