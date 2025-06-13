@@ -2,13 +2,15 @@ using System;
 
 public class NewScript : MonoBehavior
 {
-	void start()
 	{
-		print("Hello");
-	}
+    private void Start()
+    {
+        Debug.Log("Hello");
+    }
 
 	void Update()
-	{
+    {
 
-	}
+    }
 }
+
