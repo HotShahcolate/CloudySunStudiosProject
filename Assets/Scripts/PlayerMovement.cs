@@ -29,6 +29,22 @@ public class PlayerMovement : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         movement = new Vector3(h, 0, v);
+
+        // Get camera forward and right vectors, flattened
+        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 cameraRight = Camera.main.transform.right;
+        cameraForward.y = 0;
+        cameraRight.y = 0;
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        // Convert input to camera-relative direction
+        movement = (cameraForward * v + cameraRight * h);
+
+        if (movement.magnitude > 1f)
+            movement.Normalize();
+
+
     }
 
     void FixedUpdate()
