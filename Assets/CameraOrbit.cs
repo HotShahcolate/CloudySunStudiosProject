@@ -12,9 +12,9 @@ public class CameraOrbit : MonoBehaviour
 
         // Read horizontal input for camera rotation
         float horizontalInput = 0f;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             horizontalInput = -1f;
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             horizontalInput = 1f;
 
         // Rotate pivot around Y axis based on input
