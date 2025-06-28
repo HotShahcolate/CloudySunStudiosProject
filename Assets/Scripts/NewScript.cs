@@ -1,15 +1,14 @@
-using System;
+using UnityEngine;
 
-public class NewScript : MonoBehavior
+public class NewScript : MonoBehaviour
 {
-	void start()
-	{
-		print("Hello");
-	}
+    private void Start()
+    {
+        Debug.Log("Hello");
+    }
 
-	void Update()
-	{
-
-	}
+    private void Update()
+    {
+    }
 }
 
