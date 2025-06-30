@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 //[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
 public class SwordAnimation : MonoBehaviour
 {
     public float liftDuration = 1f;
+    public AudioSource audioSource;
     private float timer = 0f;
 
     private bool lifted = false;
@@ -32,7 +34,15 @@ public class SwordAnimation : MonoBehaviour
             if (collector != null)
             {
                 collector.RecieveSword();
-                Destroy(this.gameObject);
+
+                if (audioSource != null && !audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+
+                float delay = (audioSource != null && audioSource.clip != null) ? audioSource.clip.length : 0.5f;
+
+                Destroy(this.gameObject, delay);
             }
         }
 
@@ -99,6 +109,11 @@ public class SwordAnimation : MonoBehaviour
         else
         {
             Debug.Log("Animator found");
+        }
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
         }
     }
 
