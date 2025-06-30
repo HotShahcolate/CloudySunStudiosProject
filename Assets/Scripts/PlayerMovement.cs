@@ -12,11 +12,15 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Vector3 movement;
     private float chestCount;
-    public Animator anim;
+    public Animator anim1;
+    public Animator anim2;
+    public Animator anim3;
+    public int totalChestCount;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        //anim = GetComponent<Animator>();
         chestCount = 0;
         SetCountText();
         winTextObject.SetActive(false);
@@ -46,9 +50,35 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Chest"))
+        if (other.gameObject.CompareTag("Chest1"))
         {
-            anim.SetTrigger("Open");
+            anim1.SetTrigger("Open");
+            StartCoroutine(DelayAction(1, other));
+            //other.gameObject.SetActive(false);
+            /*if (Input.GetKeyDown(KeyCode.E))
+            {
+                other.gameObject.SetActive(false);
+                anim.SetTrigger("Open");
+                StartCoroutine(DelayAction(1, other));
+
+            }*/
+        }
+        else if (other.gameObject.CompareTag("Chest2"))
+            {
+                anim2.SetTrigger("Open");
+                StartCoroutine(DelayAction(1, other));
+                //other.gameObject.SetActive(false);
+                /*if (Input.GetKeyDown(KeyCode.E))
+                {
+                    other.gameObject.SetActive(false);
+                    anim.SetTrigger("Open");
+                    StartCoroutine(DelayAction(1, other));
+
+                }*/
+            }
+        else if (other.gameObject.CompareTag("Chest3"))
+        {
+            anim3.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
             //other.gameObject.SetActive(false);
             /*if (Input.GetKeyDown(KeyCode.E))
@@ -71,8 +101,8 @@ public class PlayerMovement : MonoBehaviour
 
     void SetCountText()
     {
-        chestCountText.text = "Chests collected: " + chestCount.ToString() + "/1";
-        if(chestCount >= 1)
+        chestCountText.text = "Chests collected: " + chestCount.ToString() + "/" + totalChestCount;
+        if(chestCount >= totalChestCount)
         {
             winTextObject.SetActive(true);
         }
