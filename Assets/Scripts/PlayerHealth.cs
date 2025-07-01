@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,9 +8,12 @@ public class PlayerHealth : MonoBehaviour
     private float currentHealth;
     private bool isDead = false;
 
+    [Header("Respawn")]
+    public RespawnPlayer respawnScript;
+
     [Header("UI References")]
     public Slider healthBar;
-    public GameObject gameOverPanel;
+    public GameObject playerDeadPanel;
 
     void Start()
     {
@@ -23,9 +25,9 @@ public class PlayerHealth : MonoBehaviour
             healthBar.value = currentHealth;
         }
 
-        if (gameOverPanel != null)
+        if (playerDeadPanel != null)
         {
-            gameOverPanel.SetActive(false); // Hide Game Over panel at start
+            playerDeadPanel.SetActive(false); 
         }
     }
 
@@ -54,18 +56,29 @@ public class PlayerHealth : MonoBehaviour
         isDead = true;
         Debug.Log("Player died!");
 
-        // Show Game Over panel
-        if (gameOverPanel != null)
+        if (playerDeadPanel != null)
         {
-            gameOverPanel.SetActive(true);
+            playerDeadPanel.SetActive(true); 
         }
 
-        // Disable player control
-        PlayerMovement movement = GetComponent<PlayerMovement>();
-        if (movement != null)
+        Invoke(nameof(Respawn), 1.5f); 
+    }
+
+    void Respawn()
+    {
+        respawnScript.Respawn();
+
+        currentHealth = maxHealth;
+        if (healthBar != null)
         {
-            movement.enabled = false;
+            healthBar.value = currentHealth;
         }
 
+         if (playerDeadPanel != null)
+        {
+            playerDeadPanel.SetActive(false); 
+        }
+
+        isDead = false;
     }
 }
