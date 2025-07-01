@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim1;
     public Animator anim2;
     public Animator anim3;
+    public Animator anim4;
+    public Animator anim5;
     public int totalChestCount;
 
     void Start()
@@ -95,6 +97,32 @@ public class PlayerMovement : MonoBehaviour
         else if (other.gameObject.CompareTag("Chest3"))
         {
             anim3.SetTrigger("Open");
+            StartCoroutine(DelayAction(1, other));
+            //other.gameObject.SetActive(false);
+            /*if (Input.GetKeyDown(KeyCode.E))
+            {
+                other.gameObject.SetActive(false);
+                anim.SetTrigger("Open");
+                StartCoroutine(DelayAction(1, other));
+
+            }*/
+        }
+        else if (other.gameObject.CompareTag("Chest4"))
+        {
+            anim4.SetTrigger("Open");
+            StartCoroutine(DelayAction(1, other));
+            //other.gameObject.SetActive(false);
+            /*if (Input.GetKeyDown(KeyCode.E))
+            {
+                other.gameObject.SetActive(false);
+                anim.SetTrigger("Open");
+                StartCoroutine(DelayAction(1, other));
+
+            }*/
+        }
+        else if (other.gameObject.CompareTag("Chest5"))
+        {
+            anim5.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
             //other.gameObject.SetActive(false);
             /*if (Input.GetKeyDown(KeyCode.E))
