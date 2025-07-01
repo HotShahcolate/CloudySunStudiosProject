@@ -8,6 +8,8 @@ TagManager:
   - Chest1
   - Chest2
   - Chest3
+  - Chest4
+  - Chest5
   layers:
   - Default
   - TransparentFX
