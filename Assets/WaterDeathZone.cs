@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class WaterDeathZone : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider c)
+    private void OnTriggerEnter(Collider other)
     {
-        if (c.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            c.gameObject.SetActive(false);
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(playerHealth.maxHealth);
+            }
         }
     }
 }
