@@ -40,7 +40,7 @@ public class SwordCollector : MonoBehaviour
     {
         swordHold = this.transform.Find("SwordPlacement");
 
-        if (swordHold != null )
+        if (swordHold == null )
         {
             Debug.LogError("swordHold could not find");
         }
