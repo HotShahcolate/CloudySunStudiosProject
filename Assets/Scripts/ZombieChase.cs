@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -34,9 +35,12 @@ public class ZombieChase : MonoBehaviour
 
         if (distance <= detectionRadius)
         {
+            Debug.Log("Zombie is chasing player!");
             agent.isStopped = false;
             agent.SetDestination(player.position);
-            animator.SetBool("isAttacking", false);
+            Debug.Log("Player position: " + player.position);
+            Debug.Log("Zombie position: " + transform.position);
+            animator.SetBool("isAttacking", true);
 
             // Check for attack range
             if (distance <= attackRange && Time.time - lastAttackTime > attackCooldown)
