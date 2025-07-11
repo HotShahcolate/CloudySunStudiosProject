@@ -23,7 +23,8 @@ public class PlayerAttack : MonoBehaviour
             // 3. Perform raycast to hit zombie
             Ray ray = new Ray(transform.position + Vector3.up, transform.forward);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, attackRange))
+            //if (Physics.Raycast(ray, out hit, attackRange))
+            if (Physics.SphereCast(ray, 0.3f, out hit, attackRange))
             {
                 var zombie = hit.collider.GetComponentInParent<ZombieHealth>();
                 if (zombie != null)
