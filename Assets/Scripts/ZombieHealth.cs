@@ -6,7 +6,7 @@ public class ZombieHealth : MonoBehaviour
 {
     public float maxHealth = 3f;
     private float currentHealth;
-    private bool isDead = false;
+    public bool isDead = false;
 
     private Animator animator;
     private NavMeshAgent agent;
@@ -57,18 +57,13 @@ public class ZombieHealth : MonoBehaviour
         isDead = true;
         Debug.Log("Zombie died!");
 
-        // Stop chasing and animating
-        if (animator != null)
-            animator.enabled = false;
-
         if (agent != null)
             agent.enabled = false;
 
-        // Let the zombie fall over
-        if (rb != null)
+        if (animator != null)
         {
-            rb.isKinematic = false;
-            rb.useGravity = true;
+            animator.SetTrigger("Die");
         }
+
     }
 }
