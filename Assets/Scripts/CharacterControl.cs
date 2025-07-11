@@ -24,7 +24,16 @@ public class CharacterControl : MonoBehaviour
     public Animator anim5;
     public int totalChestCount;
 
+    public float accel = 2f;
+    public float decel = 4f;
+    public float maxBlendSpeed = 1f;
+
+    private float currentBlendSpeed = 0f;
+
     private Transform cam;
+
+    //private Rigidbody currSword;
+    //private bool doSlash = false;
 
 
 
@@ -67,13 +76,6 @@ public class CharacterControl : MonoBehaviour
         // Rotate character toward movement direction
         if (isWalking && !isWalkBackward)
         {
-            //Vector3 camForward = cam.forward;
-            //Vector3 camRight = cam.right;
-            //camForward.y = 0;
-            //camRight.y = 0;
-            //camForward.Normalize();
-            //camRight.Normalize();
-
             // Calculate target rotation angle
             float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
             float angle = Mathf.LerpAngle(transform.eulerAngles.y, targetAngle + transform.eulerAngles.y, rotationSpeed * Time.deltaTime / 360f);
@@ -90,6 +92,22 @@ public class CharacterControl : MonoBehaviour
         // Set animation
         animator.SetBool("canWalk", isWalking && !isWalkBackward);
         animator.SetBool("canWalkBack", isWalkBackward);
+
+        // Determine if we're moving forward (used for blend)
+        bool isMovingForward = vertical > 0.1f;
+
+        // Blend Speed logic
+        if (isMovingForward)
+        {
+            currentBlendSpeed += accel * Time.deltaTime;
+        }
+        else
+        {
+            currentBlendSpeed -= decel * Time.deltaTime;
+        }
+
+        currentBlendSpeed = Mathf.Clamp(currentBlendSpeed, 0f, maxBlendSpeed);
+        animator.SetFloat("Speed", currentBlendSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -111,53 +129,21 @@ public class CharacterControl : MonoBehaviour
         {
             anim2.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
-            //other.gameObject.SetActive(false);
-            /*if (Input.GetKeyDown(KeyCode.E))
-            {
-                other.gameObject.SetActive(false);
-                anim.SetTrigger("Open");
-                StartCoroutine(DelayAction(1, other));
-
-            }*/
         }
         else if (other.gameObject.CompareTag("Chest3"))
         {
             anim3.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
-            //other.gameObject.SetActive(false);
-            /*if (Input.GetKeyDown(KeyCode.E))
-            {
-                other.gameObject.SetActive(false);
-                anim.SetTrigger("Open");
-                StartCoroutine(DelayAction(1, other));
-
-            }*/
         }
         else if (other.gameObject.CompareTag("Chest4"))
         {
             anim4.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
-            //other.gameObject.SetActive(false);
-            /*if (Input.GetKeyDown(KeyCode.E))
-            {
-                other.gameObject.SetActive(false);
-                anim.SetTrigger("Open");
-                StartCoroutine(DelayAction(1, other));
-
-            }*/
         }
         else if (other.gameObject.CompareTag("Chest5"))
         {
             anim5.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
-            //other.gameObject.SetActive(false);
-            /*if (Input.GetKeyDown(KeyCode.E))
-            {
-                other.gameObject.SetActive(false);
-                anim.SetTrigger("Open");
-                StartCoroutine(DelayAction(1, other));
-
-            }*/
         }
     }
     IEnumerator DelayAction(float delayTime, Collider other)
@@ -181,5 +167,15 @@ public class CharacterControl : MonoBehaviour
     void Update()
     {
         Move();
+        //if(currSword != null && Input.GetButtonDown("F"))
+        //{
+        //    doSlash = true;
+        //    //Debug.Log("Fire1 presssed");
+        //    animator.SetBool("slash", doSlash);
+        //} else
+        //{
+        //    doSlash = false;
+        //    animator.SetBool("slash", doSlash);
+        //}
     }
 }
