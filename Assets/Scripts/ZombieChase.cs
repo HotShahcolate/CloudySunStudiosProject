@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,7 +6,7 @@ using UnityEngine.AI;
 public class ZombieChase : MonoBehaviour
 {
     public float detectionRadius = 10f;
-    public float attackRange = 1.0f;
+    public float attackRange = 2.0f;
     public float attackCooldown = 1.0f;
     public float damage = 1f;
 
@@ -14,10 +15,15 @@ public class ZombieChase : MonoBehaviour
     private Animator animator;
     private float lastAttackTime = -999f;
 
+    private ZombieHealth zombieHealth;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
+        zombieHealth = GetComponent<ZombieHealth>();
+
+        agent.stoppingDistance = attackRange;
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -28,26 +34,40 @@ public class ZombieChase : MonoBehaviour
 
     void Update()
     {
+        if (zombieHealth != null && zombieHealth.isDead)
+            return;
+
         if (player == null) return;
 
         float distance = Vector3.Distance(transform.position, player.position);
 
         if (distance <= detectionRadius)
         {
-            agent.isStopped = false;
-            agent.SetDestination(player.position);
-            animator.SetBool("isAttacking", false);
+            Debug.Log("Zombie is chasing player!");
+            bool isInAttackRange = distance <= attackRange;
 
-            // Check for attack range
-            if (distance <= attackRange && Time.time - lastAttackTime > attackCooldown)
+            if (isInAttackRange)
             {
-                // Attack
+                agent.isStopped = true;
+                agent.ResetPath();
+                FacePlayer();
+            }
+            else
+            {
+                agent.isStopped = false;
+                agent.SetDestination(player.position);
+            }
+
+            animator.SetBool("isRunning", !agent.isStopped);
+            animator.SetBool("isAttacking", isInAttackRange);
+
+            if (isInAttackRange && Time.time - lastAttackTime > attackCooldown)
+            {
                 PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
                 if (playerHealth != null)
                 {
                     playerHealth.TakeDamage(damage);
                     lastAttackTime = Time.time;
-                    //animator.SetTrigger("Attack"); // Optional animation trigger
                     Debug.Log("Zombie attacks the player!");
                 }
             }
@@ -56,7 +76,19 @@ public class ZombieChase : MonoBehaviour
         {
             agent.ResetPath();
             agent.isStopped = true;
+            animator.SetBool("isRunning", false);
             animator.SetBool("isAttacking", false);
+        }
+    }
+
+    void FacePlayer()
+    {
+        Vector3 direction = (player.position - transform.position).normalized;
+        direction.y = 0;
+        if (direction != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
     }
 
