@@ -8,13 +8,20 @@ public class PlayerAttack : MonoBehaviour
     //public Animator animator;
     public KeyCode attackKey = KeyCode.F;
 
+    public Animator animator;
+    public string swingTriggerName = "slash";
+
     void Update()
     {
         if (Input.GetKeyDown(attackKey))
         {
             // 1. Trigger attack animation
-            /*if (animator != null)
-                animator.SetTrigger("Attack");*/
+            if (animator != null)
+            {
+                animator.ResetTrigger(swingTriggerName);
+                animator.SetTrigger(swingTriggerName);
+            }
+                
 
             // 2. Play swing sound
             if (swingSound != null)
