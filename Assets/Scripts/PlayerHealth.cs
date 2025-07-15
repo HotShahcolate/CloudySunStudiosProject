@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     [Header("UI References")]
     public Slider healthBar;
     public GameObject playerDeadPanel;
+    public Animator animator;
 
     void Start()
     {
@@ -35,6 +36,14 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isDead) return;
 
+        // 1. Trigger attacked animation
+        if (animator != null)
+        {
+            Debug.Log("Attacked Triggered!");
+            //animator.ResetTrigger("attacked");
+            animator.SetTrigger("attacked");
+        }
+
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0f);
 
@@ -42,6 +51,28 @@ public class PlayerHealth : MonoBehaviour
         {
             healthBar.value = currentHealth;
         }
+
+        //animator.ResetTrigger("attacked");
+
+        if (currentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+
+    public void AddHealth(float amount)
+    {
+        if (isDead) return;
+
+        currentHealth -= amount;
+        currentHealth = Mathf.Max(currentHealth, 0f);
+
+        if (healthBar != null)
+        {
+            healthBar.value = currentHealth;
+        }
+
+        //animator.ResetTrigger("attacked");
 
         if (currentHealth <= 0f)
         {
@@ -80,5 +111,10 @@ public class PlayerHealth : MonoBehaviour
         }
 
         isDead = false;
+    }
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
     }
 }
