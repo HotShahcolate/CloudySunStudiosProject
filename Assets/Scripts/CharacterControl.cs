@@ -52,6 +52,8 @@ public class CharacterControl : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
+        //animator.SetBool("attacked", false);
+
         // Create movement direction based on input
         Vector3 inputDirection = new Vector3(horizontal, 0, vertical).normalized;
 
