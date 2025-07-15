@@ -11270,7 +11270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 9
-  rotationSpeed: 720
+  rotationSpeed: 360
+  rootToRotate: {fileID: 809155656}
   gravity: 9
   verticalSpeed: 0
   chestCountText: {fileID: 856974156}
@@ -11353,6 +11354,8 @@ MonoBehaviour:
   attackDamage: 1
   swingSound: {fileID: 440542935}
   attackKey: 102
+  animator: {fileID: 0}
+  swingTriggerName: slash
 --- !u!114 &440542934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22063,6 +22066,66 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0888c9f151be5b9499b22b2bcdd7d20a, type: 3}
+--- !u!1 &809155655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 809155656}
+  - component: {fileID: 809155657}
+  m_Layer: 0
+  m_Name: CharacterRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &809155656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809155655}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 440542927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &809155657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809155655}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447c22e40785def498860f9272837adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 9
+  rotationSpeed: 180
+  rootToRotate: {fileID: 0}
+  gravity: 9
+  verticalSpeed: 0
+  chestCountText: {fileID: 856974156}
+  winTextObject: {fileID: 691882511}
+  anim1: {fileID: 1798912492}
+  anim2: {fileID: 2071328432}
+  anim3: {fileID: 942985833}
+  anim4: {fileID: 1623733775}
+  anim5: {fileID: 1217320548}
+  totalChestCount: 0
+  accel: 2
+  decel: 4
+  maxBlendSpeed: 1
 --- !u!1 &812049109
 GameObject:
   m_ObjectHideFlags: 0
@@ -27642,6 +27705,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1e21e3a76cd3217458be19b0aac33fb0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 256058574}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1e21e3a76cd3217458be19b0aac33fb0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 809155656}
     - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: 1e21e3a76cd3217458be19b0aac33fb0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 242042322}

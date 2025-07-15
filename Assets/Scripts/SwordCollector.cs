@@ -22,13 +22,13 @@ public class SwordCollector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currSword != null && Input.GetKeyDown(KeyCode.F))
-        {
-            doSlash = true;
-            //Debug.Log("Fire1 presssed");
-            //animator.SetTrigger("slash");
-            //animator.SetBool("slash", false);
-        }
+        //if (currSword != null && Input.GetKeyDown(KeyCode.F))
+        //{
+        //    doSlash = true;
+        //    //Debug.Log("Fire1 presssed");
+        //    //animator.SetTrigger("slash");
+        //    //animator.SetBool("slash", false);
+        //}
     }
 
     public void RecieveSword()
