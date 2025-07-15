@@ -18,10 +18,15 @@ public class PlayerAttack : MonoBehaviour
             // 1. Trigger attack animation
             if (animator != null)
             {
+                Debug.Log("Swinging Triggered!");
                 animator.ResetTrigger(swingTriggerName);
                 animator.SetTrigger(swingTriggerName);
+            } else
+            {
+                Debug.Log("Animator not found!");
+
             }
-                
+
 
             // 2. Play swing sound
             if (swingSound != null)
@@ -41,5 +46,10 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
     }
 }
