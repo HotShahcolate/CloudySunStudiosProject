@@ -6,7 +6,7 @@ using UnityEngine.ProBuilder.MeshOperations;
 public class CharacterControl : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public float playerSpeed = 2.0f;
+    public float playerSpeed = 9.0f;
     public float rotationSpeed = 720f;
     private Animator animator;
     public float gravity = 9f;
