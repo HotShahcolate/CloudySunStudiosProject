@@ -1723,7 +1723,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91439665}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &91439670
 Camera:
   m_ObjectHideFlags: 0
@@ -11269,7 +11269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447c22e40785def498860f9272837adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 2
+  playerSpeed: 9
   rotationSpeed: 720
   gravity: 9
   verticalSpeed: 0
@@ -27616,6 +27616,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1e21e3a76cd3217458be19b0aac33fb0, type: 3}
       propertyPath: m_Name
       value: character
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1e21e3a76cd3217458be19b0aac33fb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1e21e3a76cd3217458be19b0aac33fb0, type: 3}
       propertyPath: m_TagString
