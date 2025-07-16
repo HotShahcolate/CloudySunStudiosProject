@@ -30,7 +30,7 @@ public class SwordAnimation : MonoBehaviour
     {
         if (isPlayerNear && Input.GetKeyDown(KeyCode.LeftControl))
         {
-            SwordCollector collector = Collider.attachedRigidbody.GetComponent<SwordCollector>();
+            SwordCollector collector = Collider.GetComponent<SwordCollector>();
             if (collector != null)
             {
                 collector.RecieveSword();
@@ -125,7 +125,7 @@ public class SwordAnimation : MonoBehaviour
         
 
         // Trigger if the incoming object has a Rigidbody (e.g., a player or AI character)
-        if (!triggered && c.attachedRigidbody != null && c.attachedRigidbody.CompareTag("Player"))
+        if (!triggered && c.CompareTag("Player"))
         {
             //rb.isKinematic = true;
             //rb.useGravity = false;
@@ -142,7 +142,7 @@ public class SwordAnimation : MonoBehaviour
 
     private void OnTriggerExit(Collider c)
     {
-        if (c.attachedRigidbody != null && c.attachedRigidbody.CompareTag("Player"))
+        if (c.CompareTag("Player"))
         {
             timer = 0f;
             triggered = false;

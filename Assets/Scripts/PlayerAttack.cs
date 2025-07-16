@@ -8,13 +8,25 @@ public class PlayerAttack : MonoBehaviour
     //public Animator animator;
     public KeyCode attackKey = KeyCode.F;
 
+    public Animator animator;
+    public string swingTriggerName = "slash";
+
     void Update()
     {
         if (Input.GetKeyDown(attackKey))
         {
             // 1. Trigger attack animation
-            /*if (animator != null)
-                animator.SetTrigger("Attack");*/
+            if (animator != null)
+            {
+                Debug.Log("Swinging Triggered!");
+                animator.ResetTrigger(swingTriggerName);
+                animator.SetTrigger(swingTriggerName);
+            } else
+            {
+                Debug.Log("Animator not found!");
+
+            }
+
 
             // 2. Play swing sound
             if (swingSound != null)
@@ -23,7 +35,8 @@ public class PlayerAttack : MonoBehaviour
             // 3. Perform raycast to hit zombie
             Ray ray = new Ray(transform.position + Vector3.up, transform.forward);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, attackRange))
+            //if (Physics.Raycast(ray, out hit, attackRange))
+            if (Physics.SphereCast(ray, 0.3f, out hit, attackRange))
             {
                 var zombie = hit.collider.GetComponentInParent<ZombieHealth>();
                 if (zombie != null)
@@ -33,5 +46,10 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
     }
 }
