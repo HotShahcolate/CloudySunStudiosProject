@@ -11,6 +11,7 @@ public class ZombieHealth : MonoBehaviour
     private Animator animator;
     private NavMeshAgent agent;
     private Rigidbody rb;
+    private AudioSource[] audioSources;
 
     [Header("UI")]
     public Slider healthBar;
@@ -21,6 +22,7 @@ public class ZombieHealth : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+        audioSources = GetComponents<AudioSource>();
 
         // Update UI
         if (healthBar != null)
@@ -63,6 +65,11 @@ public class ZombieHealth : MonoBehaviour
         if (animator != null)
         {
             animator.SetTrigger("Die");
+        }
+
+        foreach (AudioSource source in audioSources)
+        {
+            source.Stop();
         }
 
     }
