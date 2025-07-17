@@ -6,8 +6,8 @@ using UnityEngine.ProBuilder.MeshOperations;
 public class CharacterControl : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public float playerSpeed = 2.0f;
-    public float rotationSpeed = 720f;
+    public float playerSpeed = 9.0f;
+    public float rotationSpeed = 360f;
     private Animator animator;
     public float gravity = 9f;
     public float verticalSpeed = 0f;
@@ -52,6 +52,8 @@ public class CharacterControl : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
+        //animator.SetBool("attacked", false);
+
         // Create movement direction based on input
         Vector3 inputDirection = new Vector3(horizontal, 0, vertical).normalized;
 
@@ -73,16 +75,33 @@ public class CharacterControl : MonoBehaviour
         bool isWalkBackward = vertical < -0.1f;
 
 
-        // Rotate character toward movement direction
-        if (isWalking && !isWalkBackward)
-        {
-            // Calculate target rotation angle
-            float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
-            float angle = Mathf.LerpAngle(transform.eulerAngles.y, targetAngle + transform.eulerAngles.y, rotationSpeed * Time.deltaTime / 360f);
+        //// Rotate character toward movement direction
+        //if (isWalking && !isWalkBackward)
+        //{
+        //    // Calculate target rotation angle
+        //    float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
+        //    float angle = Mathf.LerpAngle(transform.eulerAngles.y, targetAngle + transform.eulerAngles.y, rotationSpeed * Time.deltaTime / 360f);
 
-            // Apply rotation
-            transform.rotation = Quaternion.Euler(0, angle, 0);
+        //    // Apply rotation
+        //    transform.rotation = Quaternion.Euler(0, angle, 0);
+        //}
+        //else if (isWalking && isWalkBackward)
+        //{
+        //    // Backward movement – rotate to face backward direction
+        //    // Invert input to face opposite direction
+        //    Vector3 backwardInput = -inputDirection;
+        //    float targetAngle = Mathf.Atan2(backwardInput.x, backwardInput.z) * Mathf.Rad2Deg;
+        //    float smoothAngle = Mathf.LerpAngle(transform.eulerAngles.y, targetAngle, rotationSpeed * Time.deltaTime);
+        //    transform.rotation = Quaternion.Euler(0, smoothAngle, 0);
+        //}
+
+        // Rotate in place based on horizontal input
+        if (Mathf.Abs(horizontal) > 0.1f)
+        {
+            float rotationAmount = horizontal * rotationSpeed * Time.deltaTime;
+            transform.Rotate(0, rotationAmount, 0);
         }
+
 
         // Move character
         Vector3 moveDirection = transform.TransformDirection(inputDirection);
@@ -112,6 +131,7 @@ public class CharacterControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        other.enabled = false;
         if (other.gameObject.CompareTag("Chest1"))
         {
             anim1.SetTrigger("Open");

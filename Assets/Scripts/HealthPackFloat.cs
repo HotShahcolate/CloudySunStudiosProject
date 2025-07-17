@@ -39,7 +39,7 @@ public class HealthPackFloat : MonoBehaviour
             PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(-healAmount);
+                playerHealth.AddHealth(-healAmount);
                 Debug.Log("Healed player for " + healAmount);
 
                 if (audioSource != null && !audioSource.isPlaying)
