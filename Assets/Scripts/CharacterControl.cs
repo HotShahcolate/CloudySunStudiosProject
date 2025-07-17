@@ -1,13 +1,14 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.ProBuilder.MeshOperations;
 
 public class CharacterControl : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float playerSpeed = 9.0f;
-    public float rotationSpeed = 360f;
+    public float rotationSpeed = 90f;
     private Animator animator;
     public float gravity = 9f;
     public float verticalSpeed = 0f;
@@ -30,7 +31,7 @@ public class CharacterControl : MonoBehaviour
 
     private float currentBlendSpeed = 0f;
 
-    private Transform cam;
+    private Rigidbody rb;
 
     //private Rigidbody currSword;
     //private bool doSlash = false;
@@ -41,10 +42,66 @@ public class CharacterControl : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        cam = Camera.main.transform;
+        rb = GetComponent<Rigidbody>();
         chestCount = 0;
         SetCountText();
         winTextObject.SetActive(false);
+    }
+
+    void Move2()
+    {
+        float speed = Input.GetAxis("Vertical");
+        float blend = Input.GetAxis("Horizontal");
+
+        Vector3 input = new Vector3(blend, 0f,  speed);
+
+        if (input.magnitude > 1f)
+            input = input.normalized;
+
+        
+
+        //if (input.magnitude > 1f)
+        //    inputs = input.normalized;
+
+        if (Mathf.Abs(speed) > 0.1f)
+        {
+
+            // Move the character in world space using Rigidbody
+            Vector3 move = input * playerSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + transform.TransformDirection(move));
+
+            Quaternion targetRotation = Quaternion.LookRotation(transform.TransformDirection(input));
+            Quaternion smoothedRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            rb.MoveRotation(smoothedRotation);
+        }
+        else if (Mathf.Abs(blend) > 0.1f)
+        {
+            // Turn in place if idle but pressing A/D
+            float turnAmount = blend * rotationSpeed * 2f * Time.deltaTime;
+            Quaternion turnRotation = Quaternion.Euler(0f, turnAmount, 0f);
+            rb.MoveRotation(rb.rotation * turnRotation);
+            rb.angularVelocity = Vector3.zero;
+        }
+
+          animator.SetFloat("Blend", blend, 0.1f, Time.deltaTime);
+        animator.SetFloat("Speed", speed, 0.1f, Time.deltaTime);
+        //}
+        //animator.SetFloat("Speed", Input.GetAxis("Vertical"));
+        //if (Input.GetAxis("Vertical") != 0)
+        //{
+        //if (Input.GetAxis("Vertical") > 0)
+        //{
+        //    if (Input.GetAxis("Horizontal") > 0)
+        //    {
+        //        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+
+        //    }
+        //    if (Input.GetAxis("Horizontal") < 0)
+        //    {
+        //        transform.Rotate(0, -rotationSpeed * Time.deltaTime, 0);
+        //    }
+        //}
+        //}
     }
 
     void Move()
@@ -186,7 +243,8 @@ public class CharacterControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move2();
+        //Move();
         //if(currSword != null && Input.GetButtonDown("F"))
         //{
         //    doSlash = true;
@@ -197,5 +255,10 @@ public class CharacterControl : MonoBehaviour
         //    doSlash = false;
         //    animator.SetBool("slash", doSlash);
         //}
+    }
+
+    private void FixedUpdate()
+    {
+        Move2();
     }
 }
