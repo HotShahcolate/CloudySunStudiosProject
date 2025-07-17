@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.UIElements;
 
 public class CharacterControl : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class CharacterControl : MonoBehaviour
 
     public TextMeshProUGUI chestCountText;
     public GameObject winTextObject;
+
+    public TextMeshProUGUI distanceText;
+    public GameObject caveEntrance;
 
     private float chestCount;
     public Animator anim1;
@@ -240,6 +244,12 @@ public class CharacterControl : MonoBehaviour
         }
     }
 
+    void SetDistanceText()
+    {
+        float distanceToCave = Vector3.Distance(transform.position, caveEntrance.transform.position);
+        distanceText.text = "Distance to Cave: " + distanceToCave.ToString("0") + "m";
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -259,6 +269,7 @@ public class CharacterControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        SetDistanceText();
         Move2();
     }
 }
