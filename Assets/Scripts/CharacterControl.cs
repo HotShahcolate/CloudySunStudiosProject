@@ -1,13 +1,16 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.UIElements;
 
 public class CharacterControl : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float playerSpeed = 9.0f;
-    public float rotationSpeed = 360f;
+    public float rotationSpeed = 150f;
+    //public float strafSpeed = 0.03f;
     private Animator animator;
     public float gravity = 9f;
     public float verticalSpeed = 0f;
@@ -15,6 +18,9 @@ public class CharacterControl : MonoBehaviour
 
     public TextMeshProUGUI chestCountText;
     public GameObject winTextObject;
+
+    public TextMeshProUGUI distanceText;
+    public GameObject caveEntrance;
 
     private float chestCount;
     public Animator anim1;
@@ -30,7 +36,7 @@ public class CharacterControl : MonoBehaviour
 
     private float currentBlendSpeed = 0f;
 
-    private Transform cam;
+    private Rigidbody rb;
 
     //private Rigidbody currSword;
     //private bool doSlash = false;
@@ -41,10 +47,72 @@ public class CharacterControl : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        cam = Camera.main.transform;
+        rb = GetComponent<Rigidbody>();
         chestCount = 0;
         SetCountText();
         winTextObject.SetActive(false);
+    }
+
+    void Move2()
+    {
+        float speed = Input.GetAxis("Vertical");
+        float blend = Input.GetAxis("Horizontal");
+
+        Vector3 input = new Vector3(blend, 0f,  speed);
+
+        if (input.magnitude > 1f)
+            input = input.normalized;
+
+        // Check if Shift is held for running
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        float currentSpeed = isRunning ? playerSpeed * 2f : playerSpeed;
+
+
+
+        //if (input.magnitude > 1f)
+        //    inputs = input.normalized;
+
+        if (Mathf.Abs(speed) > 0.1f)
+        {
+            if (speed < 0f)
+                currentSpeed = currentSpeed / 2;
+
+            // Move the character in world space using Rigidbody
+            Vector3 move = input * currentSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + transform.TransformDirection(move));
+
+            Quaternion targetRotation = Quaternion.LookRotation(transform.TransformDirection(input));
+            Quaternion smoothedRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, (rotationSpeed * 1.2f) * Time.deltaTime);
+            rb.MoveRotation(smoothedRotation);
+        }
+        else if (Mathf.Abs(blend) > 0.1f)
+        {
+            // Turn in place if idle but pressing A/D
+            float turnAmount = blend * rotationSpeed * 4f * Time.deltaTime;
+            Quaternion turnRotation = Quaternion.Euler(0f, turnAmount, 0f);
+            rb.MoveRotation(rb.rotation * turnRotation);
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        animator.SetFloat("Blend", blend, 0.1f, Time.deltaTime);
+        animator.SetFloat("Speed", speed, 0.1f, Time.deltaTime);
+        //}
+        //animator.SetFloat("Speed", Input.GetAxis("Vertical"));
+        //if (Input.GetAxis("Vertical") != 0)
+        //{
+        //if (Input.GetAxis("Vertical") > 0)
+        //{
+        //    if (Input.GetAxis("Horizontal") > 0)
+        //    {
+        //        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+
+        //    }
+        //    if (Input.GetAxis("Horizontal") < 0)
+        //    {
+        //        transform.Rotate(0, -rotationSpeed * Time.deltaTime, 0);
+        //    }
+        //}
+        //}
     }
 
     void Move()
@@ -183,10 +251,17 @@ public class CharacterControl : MonoBehaviour
         }
     }
 
+    void SetDistanceText()
+    {
+        float distanceToCave = Vector3.Distance(transform.position, caveEntrance.transform.position);
+        distanceText.text = "Distance to Cave: " + distanceToCave.ToString("0") + "m";
+    }
+
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move2();
+        //Move();
         //if(currSword != null && Input.GetButtonDown("F"))
         //{
         //    doSlash = true;
@@ -197,5 +272,11 @@ public class CharacterControl : MonoBehaviour
         //    doSlash = false;
         //    animator.SetBool("slash", doSlash);
         //}
+    }
+
+    private void FixedUpdate()
+    {
+        SetDistanceText();
+        Move2();
     }
 }
