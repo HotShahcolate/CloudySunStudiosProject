@@ -9,7 +9,8 @@ public class CharacterControl : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float playerSpeed = 9.0f;
-    public float rotationSpeed = 90f;
+    public float rotationSpeed = 150f;
+    //public float strafSpeed = 0.03f;
     private Animator animator;
     public float gravity = 9f;
     public float verticalSpeed = 0f;
@@ -62,32 +63,38 @@ public class CharacterControl : MonoBehaviour
         if (input.magnitude > 1f)
             input = input.normalized;
 
-        
+        // Check if Shift is held for running
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        float currentSpeed = isRunning ? playerSpeed * 2f : playerSpeed;
+
+
 
         //if (input.magnitude > 1f)
         //    inputs = input.normalized;
 
         if (Mathf.Abs(speed) > 0.1f)
         {
+            if (speed < 0f)
+                currentSpeed = currentSpeed / 2;
 
             // Move the character in world space using Rigidbody
-            Vector3 move = input * playerSpeed * Time.fixedDeltaTime;
+            Vector3 move = input * currentSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + transform.TransformDirection(move));
 
             Quaternion targetRotation = Quaternion.LookRotation(transform.TransformDirection(input));
-            Quaternion smoothedRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            Quaternion smoothedRotation = Quaternion.RotateTowards(transform.rotation, targetRotation, (rotationSpeed * 1.2f) * Time.deltaTime);
             rb.MoveRotation(smoothedRotation);
         }
         else if (Mathf.Abs(blend) > 0.1f)
         {
             // Turn in place if idle but pressing A/D
-            float turnAmount = blend * rotationSpeed * 2f * Time.deltaTime;
+            float turnAmount = blend * rotationSpeed * 4f * Time.deltaTime;
             Quaternion turnRotation = Quaternion.Euler(0f, turnAmount, 0f);
             rb.MoveRotation(rb.rotation * turnRotation);
             rb.angularVelocity = Vector3.zero;
         }
 
-          animator.SetFloat("Blend", blend, 0.1f, Time.deltaTime);
+        animator.SetFloat("Blend", blend, 0.1f, Time.deltaTime);
         animator.SetFloat("Speed", speed, 0.1f, Time.deltaTime);
         //}
         //animator.SetFloat("Speed", Input.GetAxis("Vertical"));

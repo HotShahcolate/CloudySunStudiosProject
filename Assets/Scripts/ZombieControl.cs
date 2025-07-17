@@ -101,7 +101,7 @@ public class ZombieControl : MonoBehaviour
 
         bool isMoving = agent.velocity.magnitude > 0.1f;
         animator.SetBool("isWalking", isMoving);
-        animator.SetFloat("MoveSpeed", agent.velocity.magnitude);
+        //animator.SetFloat("MoveSpeed", agent.velocity.magnitude);
     }
 
     void ChasePlayer(float distance)
@@ -128,7 +128,13 @@ public class ZombieControl : MonoBehaviour
         if (isInAttackRange && Time.time - lastAttackTime > attackCooldown)
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
+            PlayerAttack playerAttack = player.GetComponent<PlayerAttack>();
+
+            if (playerAttack != null && playerAttack.isCountering)
+            {
+                Debug.Log("Attack was countered");
+
+            } else if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
                 lastAttackTime = Time.time;

@@ -6308,7 +6308,7 @@ Transform:
   m_GameObject: {fileID: 256058569}
   serializedVersion: 2
   m_LocalRotation: {x: 0.16603407, y: -0.061271623, z: 0.010336909, w: 0.98416036}
-  m_LocalPosition: {x: -1.1454937, y: 3.4811997, z: -212.47691}
+  m_LocalPosition: {x: -1.1454937, y: 3.4811997, z: -216.63692}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9111,7 +9111,7 @@ Transform:
   m_GameObject: {fileID: 354563093}
   serializedVersion: 2
   m_LocalRotation: {x: 0.16603404, y: -0.061271615, z: 0.010336907, w: 0.9841604}
-  m_LocalPosition: {x: -1.1454937, y: 3.4811997, z: -212.47691}
+  m_LocalPosition: {x: -1.1454937, y: 3.4811997, z: -216.63692}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11695,7 +11695,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 9
-  rotationSpeed: 100
+  rotationSpeed: 40
+  strafSpeed: 3
   gravity: 9
   verticalSpeed: 0
   chestCountText: {fileID: 856974156}
@@ -22540,6 +22541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 9
   rotationSpeed: 180
+  strafSpeed: 3
   gravity: 9
   verticalSpeed: 0
   chestCountText: {fileID: 856974156}
@@ -28359,7 +28361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1e21e3a76cd3217458be19b0aac33fb0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -208.2
+      value: -212.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1e21e3a76cd3217458be19b0aac33fb0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28413,6 +28415,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 424f0c395835fcf4895b288683086fd2, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 1e21e3a76cd3217458be19b0aac33fb0, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:RightArm'\n\tTransform 'mixamorig:RightHandRing1'\n\tTransform
+        'mixamorig:RightHandPinky1'\n\tTransform 'mixamorig:RightHandIndex1'\n\tTransform
+        'mixamorig:RightHandMiddle1'\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:RightHand'\n\tTransform
+        'mixamorig:Hips'\n\tTransform 'mixamorig:RightForeArm'\n\tTransform 'mixamorig:Hips'\n\tFrom
+        animation clip 'Blocking_w_sword'"
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 1e21e3a76cd3217458be19b0aac33fb0, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0

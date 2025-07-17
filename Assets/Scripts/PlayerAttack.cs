@@ -7,13 +7,20 @@ public class PlayerAttack : MonoBehaviour
     public AudioSource swingSound;
     //public Animator animator;
     public KeyCode attackKey = KeyCode.F;
+    public KeyCode BlockKey = KeyCode.Space;
 
     public Animator animator;
     public string swingTriggerName = "slash";
+    public string blockTriggerName = "block";
+
+    private float blockBlendVelocity = 0f;
+    public bool isCountering = false;
 
     void Update()
     {
-        if (Input.GetKeyDown(attackKey))
+        isCountering = Input.GetKey(BlockKey) || Input.GetMouseButton(1);
+
+        if (Input.GetKeyDown(attackKey) || Input.GetMouseButtonDown(0))
         {
             // 1. Trigger attack animation
             if (animator != null)
@@ -26,26 +33,55 @@ public class PlayerAttack : MonoBehaviour
                 Debug.Log("Animator not found!");
 
             }
+            
+        }
 
-
-            // 2. Play swing sound
-            if (swingSound != null)
-                swingSound.Play();
-
-            // 3. Perform raycast to hit zombie
-            Ray ray = new Ray(transform.position + Vector3.up, transform.forward);
-            RaycastHit hit;
-            //if (Physics.Raycast(ray, out hit, attackRange))
-            if (Physics.SphereCast(ray, 0.3f, out hit, attackRange))
+        if (Input.GetKeyDown(BlockKey) || Input.GetMouseButtonDown(1))
+        {
+            // 1. Trigger attack animation
+            if (animator != null)
             {
-                var zombie = hit.collider.GetComponentInParent<ZombieHealth>();
-                if (zombie != null)
-                {
-                    zombie.TakeDamage(attackDamage);
-                    Debug.Log("Zombie hit!");
-                }
+                //isCountering = true;    
+                Debug.Log("Blocking Triggered!");
+                animator.SetBool("block", isCountering);
+            }
+            else
+            {
+                Debug.Log("Animator not found!");
+
+            }
+
+        } else
+        {
+            animator.SetBool("block", isCountering);
+        }
+
+            float targetBlend = isCountering ? 1.0f : 0.0f;
+        float currentBlend = animator.GetFloat("Blocking");
+        float smoothBlend = Mathf.SmoothDamp(currentBlend, targetBlend, ref blockBlendVelocity, 0.1f);
+        animator.SetFloat("Blocking", smoothBlend);
+    }
+
+    public void PerformAttack()
+    {
+        // 2. Play swing sound
+        if (swingSound != null)
+            swingSound.Play();
+
+        // 3. Perform raycast to hit zombie
+        Ray ray = new Ray(transform.position + Vector3.up, transform.forward);
+        RaycastHit hit;
+        //if (Physics.Raycast(ray, out hit, attackRange))
+        if (Physics.SphereCast(ray, 0.3f, out hit, attackRange))
+        {
+            var zombie = hit.collider.GetComponentInParent<ZombieHealth>();
+            if (zombie != null)
+            {
+                zombie.TakeDamage(attackDamage);
+                Debug.Log("Zombie hit!");
             }
         }
+
     }
 
     private void Awake()
