@@ -10434,22 +10434,6 @@ MonoBehaviour:
   maxHealth: 3
   isDead: 0
   healthBar: {fileID: 1418919034}
---- !u!114 &408460955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408460952}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d8ca78f21aead94f877f876ec5a988b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRadius: 10
-  attackRange: 2
-  attackCooldown: 1
-  damage: 1
 --- !u!195 &408460956
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -10511,7 +10495,7 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 1
   damage: 1
-  wanderAreaCenter: {x: 0, y: 0, z: 0}
+  wanderCenter: {x: 0, y: 0, z: 0}
   wanderRadius: 5
   wanderInterval: 3
 --- !u!4 &409027631 stripped
@@ -40030,9 +40014,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 408460956}
-    - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 408460955}
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 408460954}
