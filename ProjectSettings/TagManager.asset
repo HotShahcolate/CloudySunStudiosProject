@@ -10,6 +10,7 @@ TagManager:
   - Chest3
   - Chest4
   - Chest5
+  - Water
   layers:
   - Default
   - TransparentFX
