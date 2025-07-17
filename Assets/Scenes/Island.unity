@@ -1617,10 +1617,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2535954103604261519, guid: 838c0bef810bfe94d8e33947c3cba7c6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2061522647}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 838c0bef810bfe94d8e33947c3cba7c6, type: 3}
 --- !u!1 &88331155
 GameObject:
@@ -7402,7 +7399,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   attackRange: 2
-  attackCooldown: 1
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
   damage: 1
 --- !u!195 &298446307
 NavMeshAgent:
@@ -10447,7 +10445,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   attackRange: 2
-  attackCooldown: 1
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
   damage: 1
 --- !u!195 &408460956
 NavMeshAgent:
@@ -11056,11 +11055,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c49cb18ce49e9ba49be86e64dff4a2aa, type: 3}
---- !u!4 &423959664 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 437890342005259533, guid: bc2edf0f33cc77d408d1dbd781664c17, type: 3}
-  m_PrefabInstance: {fileID: 6349946236748684224}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &425199361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3380235908727436649, guid: 0888c9f151be5b9499b22b2bcdd7d20a, type: 3}
@@ -11375,7 +11369,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   attackRange: 1.5
-  attackCooldown: 1
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
   damage: 1
 --- !u!95 &438826052
 Animator:
@@ -12119,11 +12114,6 @@ Mesh:
 Transform:
   m_CorrespondingSourceObject: {fileID: 730435106203183481, guid: 41ca15a15c560254c90d488125372181, type: 3}
   m_PrefabInstance: {fileID: 516033669}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &453986206 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2535954103604261519, guid: 838c0bef810bfe94d8e33947c3cba7c6, type: 3}
-  m_PrefabInstance: {fileID: 85382449}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &453994431 stripped
 Transform:
@@ -17825,8 +17815,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.2651985, y: 0.991737, z: 3.0654297}
-  m_Center: {x: -0.40418065, y: -0.004131496, z: 0.7534027}
+  m_Size: {x: 7.0214043, y: 2.2232354, z: 7.996689}
+  m_Center: {x: -0.5793457, y: 0.6116177, z: -1.7122269}
 --- !u!54 &635928157
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17996,7 +17986,7 @@ Transform:
   m_GameObject: {fileID: 635928155}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.609673, y: -1.9281731, z: -45.109314}
+  m_LocalPosition: {x: 33.21, y: -1.9281731, z: -51.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -26694,7 +26684,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   attackRange: 2
-  attackCooldown: 1
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
   damage: 1
 --- !u!195 &1008537563
 NavMeshAgent:
@@ -27025,7 +27016,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   attackRange: 2
-  attackCooldown: 1
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
   damage: 1
 --- !u!195 &1025308757
 NavMeshAgent:
@@ -38953,7 +38945,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   attackRange: 1.5
-  attackCooldown: 1
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
   damage: 1
 --- !u!95 &1419140091
 Animator:
@@ -39875,6 +39868,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2ef8e6599b7f9934e8ff0d64c5325a1f, type: 2}
+    - target: {fileID: 3568628872616989892, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       propertyPath: m_Name
       value: Zombie1
@@ -53689,7 +53686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   attackRange: 1.5
-  attackCooldown: 1
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
   damage: 1
 --- !u!95 &1994055379
 Animator:
@@ -54194,7 +54192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   attackRange: 2
-  attackCooldown: 1
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
   damage: 1
 --- !u!195 &2025928359
 NavMeshAgent:
@@ -54940,11 +54939,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d42b3ff7c1952445905adf283a4e3b7, type: 3}
---- !u!4 &2061522643 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2535954103604261512, guid: 838c0bef810bfe94d8e33947c3cba7c6, type: 3}
-  m_PrefabInstance: {fileID: 85382449}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2064231049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9144823741674066160, guid: 5834fad2188fd1648b19ec13190a783c, type: 3}
@@ -57054,3 +57048,14 @@ SceneRoots:
   - {fileID: 937421020}
   - {fileID: 1065147270}
   - {fileID: 863444860}
+  - {fileID: 131254206}
+  - {fileID: 213121873}
+  - {fileID: 277563299}
+  - {fileID: 354563097}
+  - {fileID: 6349946236748684224}
+  - {fileID: 1053014180}
+  - {fileID: 556788161}
+  - {fileID: 939620978}
+  - {fileID: 952377153}
+  - {fileID: 1382409320}
+  - {fileID: 85382449}
