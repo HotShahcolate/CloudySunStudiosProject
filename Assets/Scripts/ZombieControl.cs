@@ -9,7 +9,7 @@ public class ZombieControl : MonoBehaviour
     public float attackCooldown = 1.0f;
     public float damage = 1f;
 
-    public Vector3 wanderAreaCenter;
+    public Vector3 wanderCenter;
     public float wanderRadius = 5f;
     public float wanderInterval = 3f;
 
@@ -36,7 +36,7 @@ public class ZombieControl : MonoBehaviour
             player = playerObj.transform;
         }
 
-        wanderAreaCenter = transform.position;
+        wanderCenter = transform.position;
     }
 
     void Update()
@@ -66,7 +66,7 @@ public class ZombieControl : MonoBehaviour
 
         if (Time.time >= nextWanderTime)
         {
-            Vector3 randomPos = wanderAreaCenter + Random.insideUnitSphere * wanderRadius;
+            Vector3 randomPos = wanderCenter + Random.insideUnitSphere * wanderRadius;
             NavMeshHit hit;
             if (NavMesh.SamplePosition(randomPos, out hit, 2f, NavMesh.AllAreas))
             {
