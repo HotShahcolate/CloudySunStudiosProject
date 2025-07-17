@@ -56,7 +56,6 @@ public class ZombieChase : MonoBehaviour
                 FacePlayer();
 
                 animator.SetBool("isAttacking", true);
-                animator.SetFloat("MoveSpeed", 0f);
             }
             else
             {
@@ -64,7 +63,6 @@ public class ZombieChase : MonoBehaviour
                 agent.SetDestination(player.position);
 
                 animator.SetBool("isAttacking", false);
-                animator.SetFloat("MoveSpeed", agent.velocity.magnitude);
             }
 
             if (isInAttackRange && Time.time >= nextAttackTime)
@@ -84,7 +82,6 @@ public class ZombieChase : MonoBehaviour
             agent.isStopped = true;
 
             animator.SetBool("isAttacking", false);
-            animator.SetFloat("MoveSpeed", 0f);
         }
     }
 

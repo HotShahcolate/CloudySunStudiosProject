@@ -7343,6 +7343,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 298446309}
+    - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 298446306}
   m_SourcePrefab: {fileID: 100100000, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
 --- !u!4 &298446302 stripped
 Transform:
@@ -9829,6 +9832,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1025308759}
+    - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1025308756}
   m_SourcePrefab: {fileID: 100100000, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
 --- !u!1001 &368393554
 PrefabInstance:
@@ -11731,7 +11737,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 9
   rotationSpeed: 40
-  strafSpeed: 3
   gravity: 9
   verticalSpeed: 0
   chestCountText: {fileID: 856974156}
@@ -11816,8 +11821,11 @@ MonoBehaviour:
   attackDamage: 1
   swingSound: {fileID: 440542935}
   attackKey: 102
+  BlockKey: 32
   animator: {fileID: 0}
   swingTriggerName: slash
+  blockTriggerName: block
+  isCountering: 0
 --- !u!114 &440542934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22576,7 +22584,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 9
   rotationSpeed: 180
-  strafSpeed: 3
   gravity: 9
   verticalSpeed: 0
   chestCountText: {fileID: 856974156}
@@ -27394,6 +27401,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1008537565}
+    - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1008537562}
   m_SourcePrefab: {fileID: 100100000, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
 --- !u!4 &1018142065 stripped
 Transform:
@@ -40586,7 +40596,7 @@ PrefabInstance:
     - target: {fileID: 3568628872616989892, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 2ef8e6599b7f9934e8ff0d64c5325a1f, type: 2}
+      objectReference: {fileID: 9100000, guid: e6dada067d7eaf74485a21b34599378c, type: 2}
     - target: {fileID: 3568628872616989892, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
@@ -40673,6 +40683,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 408460960}
+    - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 408460955}
   m_SourcePrefab: {fileID: 100100000, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
 --- !u!4 &1460769178 stripped
 Transform:
@@ -54917,6 +54930,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2025928362}
+    - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2025928358}
   m_SourcePrefab: {fileID: 100100000, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
 --- !u!4 &2025928354 stripped
 Transform:
