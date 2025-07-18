@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class BoatTrigger : MonoBehaviour
 {
-    public Animator boatAnimator; 
+    public Animator boatAnimator;
 
     void OnTriggerEnter(Collider c)
     {
         if (c.attachedRigidbody != null)
         {
                 boatAnimator.SetBool("PlayerAtTrigger", true);
-            
+
         }
     }
 
@@ -19,7 +19,7 @@ public class BoatTrigger : MonoBehaviour
         {
             
                 boatAnimator.SetBool("PlayerAtTrigger", false);
-            
+
         }
     }
 }
