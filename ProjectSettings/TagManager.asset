@@ -11,6 +11,11 @@ TagManager:
   - Chest4
   - Chest5
   - Water
+  - Chest6
+  - Chest7
+  - Chest8
+  - Chest9
+  - Chest10
   layers:
   - Default
   - TransparentFX
