@@ -1,19 +1,22 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class ZombieChase : MonoBehaviour
 {
     public float detectionRadius = 10f;
     public float attackRange = 2.0f;
-    public float attackCooldown = 1.0f;
+
+    public float attackCooldownMin = 0.8f;
+    public float attackCooldownMax = 1.5f;
     public float damage = 1f;
 
     private Transform player;
     private NavMeshAgent agent;
     private Animator animator;
-    private float lastAttackTime = -999f;
+    private float nextAttackTime = 0f;    //private float lastAttackTime = -999f;
 
     private ZombieHealth zombieHealth;
 
@@ -51,23 +54,24 @@ public class ZombieChase : MonoBehaviour
                 agent.isStopped = true;
                 agent.ResetPath();
                 FacePlayer();
+
+                animator.SetBool("isAttacking", true);
             }
             else
             {
                 agent.isStopped = false;
                 agent.SetDestination(player.position);
+
+                animator.SetBool("isAttacking", false);
             }
 
-            animator.SetBool("isRunning", !agent.isStopped);
-            animator.SetBool("isAttacking", isInAttackRange);
-
-            if (isInAttackRange && Time.time - lastAttackTime > attackCooldown)
+            if (isInAttackRange && Time.time >= nextAttackTime)
             {
                 PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
                 if (playerHealth != null)
                 {
                     playerHealth.TakeDamage(damage);
-                    lastAttackTime = Time.time;
+                    nextAttackTime = Time.time + Random.Range(attackCooldownMin, attackCooldownMax);
                     Debug.Log("Zombie attacks the player!");
                 }
             }
@@ -76,7 +80,7 @@ public class ZombieChase : MonoBehaviour
         {
             agent.ResetPath();
             agent.isStopped = true;
-            animator.SetBool("isRunning", false);
+
             animator.SetBool("isAttacking", false);
         }
     }
