@@ -7699,6 +7699,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 298446309}
+    - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 298446306}
   m_SourcePrefab: {fileID: 100100000, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
 --- !u!4 &298446302 stripped
 Transform:
@@ -7748,6 +7751,23 @@ MonoBehaviour:
   maxHealth: 5
   isDead: 0
   healthBar: {fileID: 1672616001}
+--- !u!114 &298446306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298446303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8ca78f21aead94f877f876ec5a988b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 10
+  attackRange: 2
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
+  damage: 1
 --- !u!195 &298446307
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -10323,6 +10343,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1025308759}
+    - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1025308756}
   m_SourcePrefab: {fileID: 100100000, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
 --- !u!1001 &368393554
 PrefabInstance:
@@ -11054,6 +11077,23 @@ MonoBehaviour:
   maxHealth: 3
   isDead: 0
   healthBar: {fileID: 1418919034}
+--- !u!114 &408460955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408460952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8ca78f21aead94f877f876ec5a988b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 10
+  attackRange: 2
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
+  damage: 1
 --- !u!195 &408460956
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12094,7 +12134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   attackRange: 1.5
-  attackCooldown: 1
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
   damage: 1
 --- !u!95 &438826052
 Animator:
@@ -18569,8 +18610,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.2651985, y: 0.991737, z: 3.0654297}
-  m_Center: {x: -0.40418065, y: -0.004131496, z: 0.7534027}
+  m_Size: {x: 7.0214043, y: 2.2232354, z: 7.996689}
+  m_Center: {x: -0.5793457, y: 0.6116177, z: -1.7122269}
 --- !u!54 &635928157
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18740,7 +18781,7 @@ Transform:
   m_GameObject: {fileID: 635928155}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.609673, y: -1.9281731, z: -45.109314}
+  m_LocalPosition: {x: 33.21, y: -1.9281731, z: -51.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28338,6 +28379,23 @@ MonoBehaviour:
   maxHealth: 5
   isDead: 0
   healthBar: {fileID: 1885995632}
+--- !u!114 &1008537562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008537558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8ca78f21aead94f877f876ec5a988b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 10
+  attackRange: 2
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
+  damage: 1
 --- !u!195 &1008537563
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -28716,6 +28774,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1008537565}
+    - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1008537562}
   m_SourcePrefab: {fileID: 100100000, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
 --- !u!4 &1018142065 stripped
 Transform:
@@ -28775,6 +28836,23 @@ MonoBehaviour:
   maxHealth: 5
   isDead: 0
   healthBar: {fileID: 1349383017}
+--- !u!114 &1025308756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025308752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8ca78f21aead94f877f876ec5a988b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 10
+  attackRange: 2
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
+  damage: 1
 --- !u!195 &1025308757
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -41495,7 +41573,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   attackRange: 1.5
-  attackCooldown: 1
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
   damage: 1
 --- !u!95 &1419140091
 Animator:
@@ -42417,6 +42496,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e6dada067d7eaf74485a21b34599378c, type: 2}
+    - target: {fileID: 3568628872616989892, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       propertyPath: m_Name
       value: Zombie1
@@ -42499,6 +42582,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 408460960}
+    - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 408460955}
   m_SourcePrefab: {fileID: 100100000, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
 --- !u!4 &1460769178 stripped
 Transform:
@@ -57161,7 +57247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   attackRange: 1.5
-  attackCooldown: 1
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
   damage: 1
 --- !u!95 &1994055379
 Animator:
@@ -59062,6 +59149,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2025928362}
+    - targetCorrespondingSourceObject: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2025928358}
   m_SourcePrefab: {fileID: 100100000, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
 --- !u!4 &2025928354 stripped
 Transform:
@@ -59111,6 +59201,23 @@ MonoBehaviour:
   maxHealth: 3
   isDead: 0
   healthBar: {fileID: 1052325037}
+--- !u!114 &2025928358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025928355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8ca78f21aead94f877f876ec5a988b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 10
+  attackRange: 2
+  attackCooldownMin: 0.8
+  attackCooldownMax: 1.5
+  damage: 1
 --- !u!195 &2025928359
 NavMeshAgent:
   m_ObjectHideFlags: 0
