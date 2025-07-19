@@ -11696,7 +11696,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 9
   rotationSpeed: 40
-  strafSpeed: 3
   gravity: 9
   verticalSpeed: 0
   chestCountText: {fileID: 856974156}
@@ -11781,8 +11780,11 @@ MonoBehaviour:
   attackDamage: 1
   swingSound: {fileID: 440542935}
   attackKey: 102
+  BlockKey: 32
   animator: {fileID: 0}
   swingTriggerName: slash
+  blockTriggerName: block
+  isCountering: 0
 --- !u!114 &440542934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22541,7 +22543,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 9
   rotationSpeed: 180
-  strafSpeed: 3
   gravity: 9
   verticalSpeed: 0
   chestCountText: {fileID: 856974156}
