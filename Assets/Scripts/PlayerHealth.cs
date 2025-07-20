@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [Header("Health Settings")]
     public float maxHealth = 10f;
     private float currentHealth;
+    public float curseLevel;
     private bool isDead = false;
 
     [Header("Respawn")]
@@ -13,12 +16,18 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("UI References")]
     public Slider healthBar;
+    public Slider curseBar;
     public GameObject playerDeadPanel;
     public Animator animator;
+    public GameObject curseText;
+
+    public Coroutine damageCoroutine = null;
 
     void Start()
     {
+        curseText.SetActive(false);
         currentHealth = maxHealth;
+        curseLevel = 0;
 
         if (healthBar != null)
         {
@@ -26,10 +35,57 @@ public class PlayerHealth : MonoBehaviour
             healthBar.value = currentHealth;
         }
 
+        if (curseBar != null)
+        {
+            curseBar.maxValue = 10;
+            curseBar.value = curseLevel;
+        }
+
         if (playerDeadPanel != null)
         {
             playerDeadPanel.SetActive(false); 
         }
+    }
+
+    public void TakeCurse()
+    {
+        if (isDead) return;
+
+        curseLevel++;
+
+        if (curseBar != null)
+        {
+            curseBar.value = curseLevel;
+        }
+
+        if (curseLevel >= 10)
+        {
+            curseText.SetActive(true);
+            damageCoroutine = StartCoroutine(TakeDamageRepeat());
+        }
+    }
+
+    IEnumerator TakeDamageRepeat()
+    {
+        while (currentHealth > 0)
+        {
+            TakeDamage(1);
+            yield return new WaitForSeconds(2);
+        }
+    }
+
+    public void CureCurse()
+    {
+        print("this is running");
+
+        curseLevel = 0;
+
+        if (curseBar != null)
+        {
+            curseBar.value = curseLevel;
+        }
+        StopCoroutine(damageCoroutine);
+        curseText.SetActive(false);
     }
 
     public void TakeDamage(float amount)
@@ -86,6 +142,8 @@ public class PlayerHealth : MonoBehaviour
 
         isDead = true;
         Debug.Log("Player died!");
+
+        CureCurse();
 
         if (playerDeadPanel != null)
         {
