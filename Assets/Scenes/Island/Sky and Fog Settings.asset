@@ -1,0 +1,407 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Sky and Fog Settings
+  m_EditorClassIdentifier: 
+  components: []
+--- !u!114 &4391248808853254105
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7593b3a9277ac4696b20006c21dde2, type: 3}
+  m_Name: VisualEnvironment
+  m_EditorClassIdentifier: 
+  active: 1
+  <displayName>k__BackingField: 
+  skyType:
+    <debugId>k__BackingField: skyType
+    m_OverrideState: 1
+    m_Value: 4
+  cloudType:
+    <debugId>k__BackingField: cloudType
+    m_OverrideState: 1
+    m_Value: 0
+  skyAmbientMode:
+    <debugId>k__BackingField: skyAmbientMode
+    m_OverrideState: 0
+    m_Value: 1
+  planetRadius:
+    <debugId>k__BackingField: planetRadius
+    m_OverrideState: 1
+    m_Value: 6378.1
+  renderingSpace:
+    <debugId>k__BackingField: renderingSpace
+    m_OverrideState: 1
+    m_Value: 1
+  centerMode:
+    <debugId>k__BackingField: centerMode
+    m_OverrideState: 1
+    m_Value: 0
+  planetCenter:
+    <debugId>k__BackingField: planetCenter
+    m_OverrideState: 1
+    m_Value: {x: 0, y: -6378.1, z: 0}
+  windOrientation:
+    <debugId>k__BackingField: windOrientation
+    m_OverrideState: 1
+    m_Value: 0
+  windSpeed:
+    <debugId>k__BackingField: windSpeed
+    m_OverrideState: 1
+    m_Value: 0
+  fogType:
+    <debugId>k__BackingField: fogType
+    m_OverrideState: 1
+    m_Value: 0
+  m_Version: 1
+--- !u!114 &6544690182401572393
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d877ec3e844f2ca46830012e8e79319b, type: 3}
+  m_Name: PhysicallyBasedSky
+  m_EditorClassIdentifier: 
+  active: 1
+  <displayName>k__BackingField: Physically Based Sky
+  rotation:
+    <debugId>k__BackingField: rotation
+    m_OverrideState: 0
+    m_Value: 0
+  skyIntensityMode:
+    <debugId>k__BackingField: skyIntensityMode
+    m_OverrideState: 0
+    m_Value: 0
+  exposure:
+    <debugId>k__BackingField: exposure
+    m_OverrideState: 0
+    m_Value: 0
+  multiplier:
+    <debugId>k__BackingField: multiplier
+    m_OverrideState: 0
+    m_Value: 1
+  upperHemisphereLuxValue:
+    <debugId>k__BackingField: upperHemisphereLuxValue
+    m_OverrideState: 0
+    m_Value: 1
+  upperHemisphereLuxColor:
+    <debugId>k__BackingField: upperHemisphereLuxColor
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 0}
+  desiredLuxValue:
+    <debugId>k__BackingField: desiredLuxValue
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    <debugId>k__BackingField: updateMode
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    <debugId>k__BackingField: updatePeriod
+    m_OverrideState: 0
+    m_Value: 0
+  includeSunInBaking:
+    <debugId>k__BackingField: includeSunInBaking
+    m_OverrideState: 0
+    m_Value: 0
+  type:
+    <debugId>k__BackingField: type
+    m_OverrideState: 0
+    m_Value: 1
+  atmosphericScattering:
+    <debugId>k__BackingField: atmosphericScattering
+    m_OverrideState: 0
+    m_Value: 1
+  renderingMode:
+    <debugId>k__BackingField: renderingMode
+    m_OverrideState: 0
+    m_Value: 0
+  material:
+    <debugId>k__BackingField: material
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  airDensityR:
+    <debugId>k__BackingField: airDensityR
+    m_OverrideState: 0
+    m_Value: 0.04534
+  airDensityG:
+    <debugId>k__BackingField: airDensityG
+    m_OverrideState: 0
+    m_Value: 0.10237241
+  airDensityB:
+    <debugId>k__BackingField: airDensityB
+    m_OverrideState: 0
+    m_Value: 0.23264056
+  airTint:
+    <debugId>k__BackingField: airTint
+    m_OverrideState: 0
+    m_Value:
+      r: 1
+      g: 1
+      b: 1
+      a: 1
+  airMaximumAltitude:
+    <debugId>k__BackingField: airMaximumAltitude
+    m_OverrideState: 0
+    m_Value: 55261.973
+  aerosolDensity:
+    <debugId>k__BackingField: aerosolDensity
+    m_OverrideState: 0
+    m_Value: 0.01192826
+  aerosolTint:
+    <debugId>k__BackingField: aerosolTint
+    m_OverrideState: 0
+    m_Value:
+      r: 0.9
+      g: 0.9
+      b: 0.9
+      a: 1
+  aerosolMaximumAltitude:
+    <debugId>k__BackingField: aerosolMaximumAltitude
+    m_OverrideState: 0
+    m_Value: 8289.296
+  aerosolAnisotropy:
+    <debugId>k__BackingField: aerosolAnisotropy
+    m_OverrideState: 0
+    m_Value: 0.8
+  ozoneDensityDimmer:
+    <debugId>k__BackingField: ozoneDensityDimmer
+    m_OverrideState: 0
+    m_Value: 1
+  ozoneMinimumAltitude:
+    <debugId>k__BackingField: ozoneMinimumAltitude
+    m_OverrideState: 0
+    m_Value: 20000
+  ozoneLayerWidth:
+    <debugId>k__BackingField: ozoneLayerWidth
+    m_OverrideState: 0
+    m_Value: 20000
+  groundTint:
+    <debugId>k__BackingField: groundTint
+    m_OverrideState: 0
+    m_Value:
+      r: 0.12
+      g: 0.1
+      b: 0.09
+      a: 1
+  groundColorTexture:
+    <debugId>k__BackingField: groundColorTexture
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  groundEmissionTexture:
+    <debugId>k__BackingField: groundEmissionTexture
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  groundEmissionMultiplier:
+    <debugId>k__BackingField: groundEmissionMultiplier
+    m_OverrideState: 0
+    m_Value: 1
+  planetRotation:
+    <debugId>k__BackingField: planetRotation
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 0}
+  spaceEmissionTexture:
+    <debugId>k__BackingField: spaceEmissionTexture
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  spaceEmissionMultiplier:
+    <debugId>k__BackingField: spaceEmissionMultiplier
+    m_OverrideState: 0
+    m_Value: 1
+  spaceRotation:
+    <debugId>k__BackingField: spaceRotation
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 0}
+  colorSaturation:
+    <debugId>k__BackingField: colorSaturation
+    m_OverrideState: 0
+    m_Value: 1
+  alphaSaturation:
+    <debugId>k__BackingField: alphaSaturation
+    m_OverrideState: 0
+    m_Value: 1
+  alphaMultiplier:
+    <debugId>k__BackingField: alphaMultiplier
+    m_OverrideState: 0
+    m_Value: 1
+  horizonTint:
+    <debugId>k__BackingField: horizonTint
+    m_OverrideState: 0
+    m_Value:
+      r: 1
+      g: 1
+      b: 1
+      a: 1
+  zenithTint:
+    <debugId>k__BackingField: zenithTint
+    m_OverrideState: 0
+    m_Value:
+      r: 1
+      g: 1
+      b: 1
+      a: 1
+  horizonZenithShift:
+    <debugId>k__BackingField: horizonZenithShift
+    m_OverrideState: 0
+    m_Value: 0
+  m_SkyVersion: 3
+  m_ObsoleteEarthPreset:
+    <debugId>k__BackingField: m_ObsoleteEarthPreset
+    m_OverrideState: 0
+    m_Value: 1
+  planetaryRadius:
+    <debugId>k__BackingField: planetaryRadius
+    m_OverrideState: 0
+    m_Value: 6378100
+  planetCenterPosition:
+    <debugId>k__BackingField: planetCenterPosition
+    m_OverrideState: 0
+    m_Value: {x: 0, y: -6378100, z: 0}
+--- !u!114 &8217725556179098334
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953beb541740ddc499d005ee80c9ff29, type: 3}
+  m_Name: Fog
+  m_EditorClassIdentifier: 
+  active: 1
+  <displayName>k__BackingField: 
+  quality:
+    <debugId>k__BackingField: quality
+    m_OverrideState: 0
+    m_Value: 1
+  enabled:
+    <debugId>k__BackingField: enabled
+    m_OverrideState: 1
+    m_Value: 1
+  colorMode:
+    <debugId>k__BackingField: colorMode
+    m_OverrideState: 0
+    m_Value: 1
+  color:
+    <debugId>k__BackingField: color
+    m_OverrideState: 0
+    m_Value:
+      r: 0.5
+      g: 0.5
+      b: 0.5
+      a: 1
+  tint:
+    <debugId>k__BackingField: tint
+    m_OverrideState: 0
+    m_Value:
+      r: 1
+      g: 1
+      b: 1
+      a: 1
+  maxFogDistance:
+    <debugId>k__BackingField: maxFogDistance
+    m_OverrideState: 0
+    m_Value: 5000
+  mipFogMaxMip:
+    <debugId>k__BackingField: mipFogMaxMip
+    m_OverrideState: 0
+    m_Value: 0.5
+  mipFogNear:
+    <debugId>k__BackingField: mipFogNear
+    m_OverrideState: 0
+    m_Value: 0
+  mipFogFar:
+    <debugId>k__BackingField: mipFogFar
+    m_OverrideState: 0
+    m_Value: 1000
+  baseHeight:
+    <debugId>k__BackingField: baseHeight
+    m_OverrideState: 0
+    m_Value: 0
+  maximumHeight:
+    <debugId>k__BackingField: maximumHeight
+    m_OverrideState: 0
+    m_Value: 50
+  meanFreePath:
+    <debugId>k__BackingField: Fog Attenuation Distance
+    m_OverrideState: 0
+    m_Value: 400
+  enableVolumetricFog:
+    <debugId>k__BackingField: Volumetric Fog
+    m_OverrideState: 1
+    m_Value: 1
+  albedo:
+    <debugId>k__BackingField: albedo
+    m_OverrideState: 0
+    m_Value:
+      r: 1
+      g: 1
+      b: 1
+      a: 1
+  globalLightProbeDimmer:
+    <debugId>k__BackingField: GI Dimmer
+    m_OverrideState: 0
+    m_Value: 1
+  depthExtent:
+    <debugId>k__BackingField: depthExtent
+    m_OverrideState: 0
+    m_Value: 64
+  denoisingMode:
+    <debugId>k__BackingField: denoisingMode
+    m_OverrideState: 0
+    m_Value: 2
+  anisotropy:
+    <debugId>k__BackingField: anisotropy
+    m_OverrideState: 0
+    m_Value: 0
+  sliceDistributionUniformity:
+    <debugId>k__BackingField: sliceDistributionUniformity
+    m_OverrideState: 0
+    m_Value: 0.75
+  multipleScatteringIntensity:
+    <debugId>k__BackingField: multipleScatteringIntensity
+    m_OverrideState: 0
+    m_Value: 0
+  m_FogControlMode:
+    <debugId>k__BackingField: m_FogControlMode
+    m_OverrideState: 0
+    m_Value: 0
+  screenResolutionPercentage:
+    <debugId>k__BackingField: screenResolutionPercentage
+    m_OverrideState: 0
+    m_Value: 12.5
+  volumeSliceCount:
+    <debugId>k__BackingField: volumeSliceCount
+    m_OverrideState: 0
+    m_Value: 64
+  m_VolumetricFogBudget:
+    <debugId>k__BackingField: m_VolumetricFogBudget
+    m_OverrideState: 0
+    m_Value: 0.25
+  m_ResolutionDepthRatio:
+    <debugId>k__BackingField: m_ResolutionDepthRatio
+    m_OverrideState: 0
+    m_Value: 0.5
+  directionalLightsOnly:
+    <debugId>k__BackingField: directionalLightsOnly
+    m_OverrideState: 0
+    m_Value: 0
