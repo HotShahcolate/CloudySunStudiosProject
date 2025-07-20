@@ -84,7 +84,10 @@ public class PlayerHealth : MonoBehaviour
         {
             curseBar.value = curseLevel;
         }
-        StopCoroutine(damageCoroutine);
+        if (damageCoroutine != null)
+        {
+            StopCoroutine(damageCoroutine);
+        }
         curseText.SetActive(false);
     }
 
