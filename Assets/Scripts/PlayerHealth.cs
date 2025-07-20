@@ -105,9 +105,9 @@ public class PlayerHealth : MonoBehaviour
             healthBar.value = currentHealth;
         }
 
-         if (playerDeadPanel != null)
+        if (playerDeadPanel != null)
         {
-            playerDeadPanel.SetActive(false); 
+            playerDeadPanel.SetActive(false);
         }
 
         isDead = false;

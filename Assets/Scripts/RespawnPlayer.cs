@@ -13,6 +13,17 @@ public class RespawnPlayer : MonoBehaviour
             water.GetComponent<Collider>().enabled = true;
         }
 
-        transform.position = respawnPoint.position;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (!player.GetComponent<Collider>().enabled)
+        {
+            player.GetComponent<Collider>().enabled = true;
+        }
+        player.GetComponent<Rigidbody>().useGravity = false;
+        player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+        player.GetComponent<Rigidbody>().MovePosition(respawnPoint.position);
+        player.GetComponent<Rigidbody>().useGravity = true;
+        
+        print("Player Respawned at: " + player.transform.position + player.name);
+
     }
 }
