@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SwordCollector : MonoBehaviour
@@ -6,9 +7,12 @@ public class SwordCollector : MonoBehaviour
 
     public Rigidbody swordPrefab;
 
+    public Rigidbody swordPrefab2;
+
     private Animator animator;
 
     private Rigidbody currSword;
+    private Coroutine powerUpCoroutine;
     private bool doSlash = false;
 
     private float slashTimer = 0f;
@@ -35,10 +39,34 @@ public class SwordCollector : MonoBehaviour
     {
         if (currSword != null)
         {
+            Debug.LogWarning("Already holding a sword.");
+            return;
+        }
+
+        EquipSword(swordPrefab);
+    }
+
+    public void RecievePowerUp(float duration)
+    {
+        if (powerUpCoroutine != null)
+        {
+            StopCoroutine(powerUpCoroutine);
+        }
+
+        EquipSword(swordPrefab2);
+        Debug.Log("Power sword equipped!");
+
+        powerUpCoroutine = StartCoroutine(ReturnToNormalSwordAfter(duration));
+    }
+
+    public void EquipSword(Rigidbody swordType)
+    {
+        if (currSword != null)
+        {
             Debug.LogWarning("Has sword already");
         }
 
-        currSword = Instantiate(swordPrefab, swordHold);
+        currSword = Instantiate(swordType, swordHold);
 
         //Align the possition
         currSword.transform.localPosition = Vector3.zero;
@@ -46,6 +74,13 @@ public class SwordCollector : MonoBehaviour
 
         //Set Kinematic to true
         currSword.isKinematic = true;
+    }
+
+    private IEnumerator ReturnToNormalSwordAfter(float time)
+    {
+        yield return new WaitForSeconds(time);
+        EquipSword(swordPrefab);
+
     }
 
     private void FixedUpdate()
