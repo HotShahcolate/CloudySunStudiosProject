@@ -22,6 +22,7 @@ public class RespawnPlayer : MonoBehaviour
         player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         player.GetComponent<Rigidbody>().MovePosition(respawnPoint.position);
         player.GetComponent<Rigidbody>().useGravity = true;
+        transform.position = respawnPoint.position;
 
         print("Player Respawned at: " + player.transform.position + player.name);
     }
