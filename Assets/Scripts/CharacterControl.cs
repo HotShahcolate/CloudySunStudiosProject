@@ -28,6 +28,11 @@ public class CharacterControl : MonoBehaviour
     public Animator anim3;
     public Animator anim4;
     public Animator anim5;
+    public Animator anim6;
+    public Animator anim7;
+    public Animator anim8;
+    public Animator anim9;
+    public Animator anim10;
     public int totalChestCount;
 
     public float accel = 2f;
@@ -231,6 +236,31 @@ public class CharacterControl : MonoBehaviour
         else if (other.gameObject.CompareTag("Chest5"))
         {
             anim5.SetTrigger("Open");
+            StartCoroutine(DelayAction(1, other));
+        }
+        else if (other.gameObject.CompareTag("Chest6"))
+        {
+            anim6.SetTrigger("Open");
+            StartCoroutine(DelayAction(1, other));
+        }
+        else if (other.gameObject.CompareTag("Chest7"))
+        {
+            anim7.SetTrigger("Open");
+            StartCoroutine(DelayAction(1, other));
+        }
+        else if (other.gameObject.CompareTag("Chest8"))
+        {
+            anim8.SetTrigger("Open");
+            StartCoroutine(DelayAction(1, other));
+        }
+        else if (other.gameObject.CompareTag("Chest9"))
+        {
+            anim9.SetTrigger("Open");
+            StartCoroutine(DelayAction(1, other));
+        }
+        else if (other.gameObject.CompareTag("Chest10"))
+        {
+            anim10.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
         }
     }

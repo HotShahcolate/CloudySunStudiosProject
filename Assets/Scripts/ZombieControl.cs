@@ -21,8 +21,7 @@ public class ZombieControl : MonoBehaviour
     private Transform player;
     private NavMeshAgent agent;
     private Animator animator;
-    private float lastAttackTime = -999f;
-
+    //private float lastAttackTime = -999f;
     private ZombieHealth zombieHealth;
 
     private float nextWanderTime = 0f;
@@ -113,7 +112,7 @@ public class ZombieControl : MonoBehaviour
             agent.isStopped = true;
             agent.ResetPath();
             FacePlayer();
-            UpdateAudio("Attack");
+            //UpdateAudio("Attack");
         }
         else
         {
@@ -124,8 +123,14 @@ public class ZombieControl : MonoBehaviour
 
         animator.SetBool("isRunning", !agent.isStopped);
         animator.SetBool("isAttacking", isInAttackRange);
+    }
 
-        if (isInAttackRange && Time.time - lastAttackTime > attackCooldown)
+    public void ZombieAttackHit()
+    {
+        if (player == null || zombieHealth.isDead) return;
+
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance <= attackRange)
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             PlayerAttack playerAttack = player.GetComponent<PlayerAttack>();
@@ -133,11 +138,13 @@ public class ZombieControl : MonoBehaviour
             if (playerAttack != null && playerAttack.isCountering)
             {
                 Debug.Log("Attack was countered");
-
-            } else if (playerHealth != null)
+            }
+            else if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
-                lastAttackTime = Time.time;
+                if (attackClip != null)
+                    audioSource.PlayOneShot(attackClip);
+                Debug.Log("Zombie landed attack!");
             }
         }
     }
