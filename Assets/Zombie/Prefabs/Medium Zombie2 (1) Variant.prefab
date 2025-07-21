@@ -391,7 +391,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: e6dada067d7eaf74485a21b34599378c, type: 2}
     - target: {fileID: 4803014352389650695, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       propertyPath: m_Name
-      value: Zombie2 (1) Variant
+      value: Medium Zombie2 (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4956532458698703312, guid: 06cb2b131fe009c47a523671a8fa9ed8, type: 3}
       propertyPath: m_Name
@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e546820c3554cd849b88560909c4c28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 10
+  detectionRadius: 20
   attackRange: 3
   attackCooldown: 1
   damage: 1
