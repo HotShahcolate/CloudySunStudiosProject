@@ -18,11 +18,12 @@ public class CharacterControl : MonoBehaviour
 
     public TextMeshProUGUI chestCountText;
     public GameObject winTextObject;
+    public GameObject insufficientChestsObject;
 
     public TextMeshProUGUI distanceText;
     public GameObject caveEntrance;
 
-    private float chestCount;
+    public float chestCount;
     public Animator anim1;
     public Animator anim2;
     public Animator anim3;
@@ -50,6 +51,7 @@ public class CharacterControl : MonoBehaviour
 
     void Start()
     {
+        insufficientChestsObject.SetActive(false);
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
