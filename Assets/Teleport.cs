@@ -10,7 +10,7 @@ public class TeleportToCave : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         CharacterControl control = other.GetComponent<CharacterControl>();
-        if (control.chestCount < 6 )
+        if (control.chestCount < 5 )
         {
             insufficientChests.SetActive(true);
             StartCoroutine(DelayText());
