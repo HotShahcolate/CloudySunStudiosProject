@@ -4,6 +4,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public float attackRange = 2f;
     public float attackDamage = 1f;
+    public float attackDamagePowerUp = 1f;
     public AudioSource swingSound;
     //public Animator animator;
     public KeyCode attackKey = KeyCode.F;
@@ -64,9 +65,32 @@ public class PlayerAttack : MonoBehaviour
 
     public void PerformAttack()
     {
+        SwordCollector collector = GetComponent<SwordCollector>();
+
+        if (collector != null)
+        {
+            Debug.Log("Script not found!");
+        }
+
+        if (collector.PowerUp)
+        {
+            Attack(attackDamage + 2f, swingSound);
+        }
+        else
+        {
+            Attack(attackDamage, swingSound);
+        }
+
+        
+        
+
+    }
+
+    public void Attack(float attackDam, AudioSource swing)
+    {
         // 2. Play swing sound
-        if (swingSound != null)
-            swingSound.Play();
+        if (swing != null)
+            swing.Play();
 
         // 3. Perform raycast to hit zombie
         Ray ray = new Ray(transform.position + Vector3.up, transform.forward);
@@ -77,11 +101,10 @@ public class PlayerAttack : MonoBehaviour
             var zombie = hit.collider.GetComponentInParent<ZombieHealth>();
             if (zombie != null)
             {
-                zombie.TakeDamage(attackDamage);
+                zombie.TakeDamage(attackDam);
                 Debug.Log("Zombie hit!");
             }
         }
-
     }
 
     private void Awake()
