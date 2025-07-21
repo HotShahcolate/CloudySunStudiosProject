@@ -51,7 +51,7 @@ public class CharacterControl : MonoBehaviour
 
     void Start()
     {
-        //insufficientChestsObject.SetActive(false);
+        insufficientChestsObject.SetActive(false);
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
