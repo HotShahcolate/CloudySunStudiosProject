@@ -17,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
     private float blockBlendVelocity = 0f;
     public bool isCountering = false;
 
+
     void Update()
     {
         isCountering = Input.GetKey(BlockKey) || Input.GetMouseButton(1);

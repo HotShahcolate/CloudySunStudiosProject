@@ -44,11 +44,6 @@ public class CharacterControl : MonoBehaviour
 
     private Rigidbody rb;
 
-    //private Rigidbody currSword;
-    //private bool doSlash = false;
-
-
-
     void Start()
     {
         insufficientChestsObject.SetActive(false);
@@ -103,106 +98,9 @@ public class CharacterControl : MonoBehaviour
 
         animator.SetFloat("Blend", blend, 0.1f, Time.deltaTime);
         animator.SetFloat("Speed", speed, 0.1f, Time.deltaTime);
-        //}
-        //animator.SetFloat("Speed", Input.GetAxis("Vertical"));
-        //if (Input.GetAxis("Vertical") != 0)
-        //{
-        //if (Input.GetAxis("Vertical") > 0)
-        //{
-        //    if (Input.GetAxis("Horizontal") > 0)
-        //    {
-        //        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
 
-        //    }
-        //    if (Input.GetAxis("Horizontal") < 0)
-        //    {
-        //        transform.Rotate(0, -rotationSpeed * Time.deltaTime, 0);
-        //    }
-        //}
-        //}
     }
 
-    void Move()
-    {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        //animator.SetBool("attacked", false);
-
-        // Create movement direction based on input
-        Vector3 inputDirection = new Vector3(horizontal, 0, vertical).normalized;
-
-        if (controller.isGrounded)
-        {
-            verticalSpeed = 0;
-        }
-        else
-        {
-            verticalSpeed -= gravity * Time.deltaTime;
-        }
-
-        Vector3 gravityMove = new Vector3(0, verticalSpeed, 0);
-        //Vector3 move = transform.forward * vertical + transform.right * horizontal;
-        //controller.Move(playerSpeed * Time.deltaTime * move + gravityMove * Time.deltaTime);
-        //animator.SetBool("canWalk", vertical != 0 || horizontal != 0);
-
-        bool isWalking = inputDirection.magnitude > 0.1f;
-        bool isWalkBackward = vertical < -0.1f;
-
-
-        //// Rotate character toward movement direction
-        //if (isWalking && !isWalkBackward)
-        //{
-        //    // Calculate target rotation angle
-        //    float targetAngle = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
-        //    float angle = Mathf.LerpAngle(transform.eulerAngles.y, targetAngle + transform.eulerAngles.y, rotationSpeed * Time.deltaTime / 360f);
-
-        //    // Apply rotation
-        //    transform.rotation = Quaternion.Euler(0, angle, 0);
-        //}
-        //else if (isWalking && isWalkBackward)
-        //{
-        //    // Backward movement – rotate to face backward direction
-        //    // Invert input to face opposite direction
-        //    Vector3 backwardInput = -inputDirection;
-        //    float targetAngle = Mathf.Atan2(backwardInput.x, backwardInput.z) * Mathf.Rad2Deg;
-        //    float smoothAngle = Mathf.LerpAngle(transform.eulerAngles.y, targetAngle, rotationSpeed * Time.deltaTime);
-        //    transform.rotation = Quaternion.Euler(0, smoothAngle, 0);
-        //}
-
-        // Rotate in place based on horizontal input
-        if (Mathf.Abs(horizontal) > 0.1f)
-        {
-            float rotationAmount = horizontal * rotationSpeed * Time.deltaTime;
-            transform.Rotate(0, rotationAmount, 0);
-        }
-
-
-        // Move character
-        Vector3 moveDirection = transform.TransformDirection(inputDirection);
-        controller.Move(moveDirection * playerSpeed * Time.deltaTime + gravityMove * Time.deltaTime);
-
-       
-        // Set animation
-        animator.SetBool("canWalk", isWalking && !isWalkBackward);
-        animator.SetBool("canWalkBack", isWalkBackward);
-
-        // Determine if we're moving forward (used for blend)
-        bool isMovingForward = vertical > 0.1f;
-
-        // Blend Speed logic
-        if (isMovingForward)
-        {
-            currentBlendSpeed += accel * Time.deltaTime;
-        }
-        else
-        {
-            currentBlendSpeed -= decel * Time.deltaTime;
-        }
-
-        currentBlendSpeed = Mathf.Clamp(currentBlendSpeed, 0f, maxBlendSpeed);
-        animator.SetFloat("Speed", currentBlendSpeed);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -292,18 +190,7 @@ public class CharacterControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Move2();
-        //Move();
-        //if(currSword != null && Input.GetButtonDown("F"))
-        //{
-        //    doSlash = true;
-        //    //Debug.Log("Fire1 presssed");
-        //    animator.SetBool("slash", doSlash);
-        //} else
-        //{
-        //    doSlash = false;
-        //    animator.SetBool("slash", doSlash);
-        //}
+
     }
 
     private void FixedUpdate()
