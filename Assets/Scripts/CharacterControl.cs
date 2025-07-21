@@ -204,7 +204,7 @@ public class CharacterControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.enabled = false;
+        //other.enabled = false;
         if (other.gameObject.CompareTag("Chest1"))
         {
             anim1.SetTrigger("Open");

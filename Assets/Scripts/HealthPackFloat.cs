@@ -42,6 +42,9 @@ public class HealthPackFloat : MonoBehaviour
                 playerHealth.AddHealth(-healAmount);
                 Debug.Log("Healed player for " + healAmount);
 
+                //cure curse
+                playerHealth.CureCurse();
+
                 if (audioSource != null && !audioSource.isPlaying)
                 {
                     audioSource.Play();
