@@ -22,6 +22,7 @@ public class NewScript : MonoBehaviour
             {
                 collector.RecievePowerUp(60f);
                 Debug.Log("Triggered the power up");
+                Destroy(transform.parent.gameObject);
             }
         }
     }

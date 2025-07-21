@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SwordCollector : MonoBehaviour
 {
@@ -11,8 +12,11 @@ public class SwordCollector : MonoBehaviour
 
     private Animator animator;
 
+    public AudioSource[] audioSources;
+
     private Rigidbody currSword;
     private Coroutine powerUpCoroutine;
+    public bool PowerUp = false;
     private bool doSlash = false;
 
     private float slashTimer = 0f;
@@ -53,8 +57,18 @@ public class SwordCollector : MonoBehaviour
             StopCoroutine(powerUpCoroutine);
         }
 
+        PowerUp = true;
+
         EquipSword(swordPrefab2);
         Debug.Log("Power sword equipped!");
+
+        PowerUpTimer timer = FindAnyObjectByType<PowerUpTimer>();
+
+        if (timer != null)
+        {
+            timer.StartTimer(duration); // Starts a 60-second countdown
+            Debug.LogWarning("Timer Started!");
+        }
 
         powerUpCoroutine = StartCoroutine(ReturnToNormalSwordAfter(duration));
     }
@@ -64,6 +78,7 @@ public class SwordCollector : MonoBehaviour
         if (currSword != null)
         {
             Debug.LogWarning("Has sword already");
+            Destroy(currSword.gameObject);
         }
 
         currSword = Instantiate(swordType, swordHold);
@@ -74,12 +89,18 @@ public class SwordCollector : MonoBehaviour
 
         //Set Kinematic to true
         currSword.isKinematic = true;
+
+        if (audioSources[0] != null && !audioSources[0].isPlaying)
+        {
+            audioSources[0].Play();
+        }
     }
 
     private IEnumerator ReturnToNormalSwordAfter(float time)
     {
         yield return new WaitForSeconds(time);
         EquipSword(swordPrefab);
+        PowerUp = false;
 
     }
 
