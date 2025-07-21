@@ -1,13 +1,7 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/RightArrow.mat.meta
-guid: 6274a459931af4bf5b41ba3b03052a33
-NativeFormatImporter:
-========
 guid: b31d2799615ee434b8b697460ebfdc7c
 PrefabImporter:
->>>>>>>> origin/main:Assets/Zombie/Prefabs/Easy Zombie1 Variant.prefab.meta
   externalObjects: {}
-  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
