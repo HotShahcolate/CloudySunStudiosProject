@@ -38,24 +38,29 @@ public class PlayerAttack : MonoBehaviour
             
         }
 
-        if (Input.GetKeyDown(BlockKey) || Input.GetMouseButtonDown(1))
+        CharacterControl characterControl = GetComponent<CharacterControl>();
+        if (characterControl.chestCount >= 2)
         {
-            // 1. Trigger attack animation
-            if (animator != null)
+            if (Input.GetKeyDown(BlockKey) || Input.GetMouseButtonDown(1))
             {
-                //isCountering = true;    
-                Debug.Log("Blocking Triggered!");
-                animator.SetBool("block", isCountering);
+                // 1. Trigger attack animation
+                if (animator != null)
+                {
+                    //isCountering = true;    
+                    Debug.Log("Blocking Triggered!");
+                    animator.SetBool("block", isCountering);
+                }
+                else
+                {
+                    Debug.Log("Animator not found!");
+
+                }
+
             }
             else
             {
-                Debug.Log("Animator not found!");
-
+                animator.SetBool("block", isCountering);
             }
-
-        } else
-        {
-            animator.SetBool("block", isCountering);
         }
 
             float targetBlend = isCountering ? 1.0f : 0.0f;
