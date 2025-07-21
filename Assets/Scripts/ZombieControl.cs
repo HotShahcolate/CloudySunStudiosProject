@@ -10,6 +10,9 @@ public class ZombieControl : MonoBehaviour
     public float attackCooldown = 1.0f;
     public float damage = 1f;
 
+    public float walkSpeed = 1.0f;
+    public float runSpeed = 5.0f;
+
     public Vector3 wanderCenter;
     public float wanderRadius = 5f;
     public float wanderInterval = 3f;
@@ -21,14 +24,19 @@ public class ZombieControl : MonoBehaviour
     private Transform player;
     private NavMeshAgent agent;
     private Animator animator;
-    //private float lastAttackTime = -999f;
     private ZombieHealth zombieHealth;
-
     private float nextWanderTime = 0f;
-
     private AudioSource audioSource;
     private string currentAudioState = "";
 
+    void Awake()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
+    }
 
     void Start()
     {
@@ -37,7 +45,7 @@ public class ZombieControl : MonoBehaviour
         zombieHealth = GetComponent<ZombieHealth>();
         audioSource = GetComponent<AudioSource>();
 
-        agent.stoppingDistance = attackRange;
+        agent.stoppingDistance = attackRange + 0.5f;
         agent.isStopped = true;
         audioSource.loop = true;
         audioSource.playOnAwake = false;
@@ -85,6 +93,8 @@ public class ZombieControl : MonoBehaviour
         animator.SetBool("isRunning", false);
         animator.SetBool("isAttacking", false);
 
+        agent.speed = walkSpeed;
+
         if (Time.time >= nextWanderTime || !agent.hasPath || agent.remainingDistance <= agent.stoppingDistance)
         {
             Vector3 randomPos = wanderCenter + Random.insideUnitSphere * wanderRadius;
@@ -106,6 +116,8 @@ public class ZombieControl : MonoBehaviour
     void ChasePlayer(float distance)
     {
         bool isInAttackRange = distance <= attackRange;
+
+        agent.speed = runSpeed;
 
         if (isInAttackRange)
         {
