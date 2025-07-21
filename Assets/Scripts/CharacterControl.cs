@@ -65,15 +65,19 @@ public class CharacterControl : MonoBehaviour
         float speed = Input.GetAxis("Vertical");
         float blend = Input.GetAxis("Horizontal");
 
-        Vector3 input = new Vector3(blend, 0f,  speed);
+        Vector3 input = new Vector3(blend, 0f, speed);
 
         if (input.magnitude > 1f)
             input = input.normalized;
 
         // Check if Shift is held for running
-        bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        CharacterControl characterControl = GetComponent<CharacterControl>();
+        bool isRunning = false;
+        if (characterControl.chestCount >= 3)
+        {
+            isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        }
         float currentSpeed = isRunning ? playerSpeed * 2f : playerSpeed;
-
 
 
         //if (input.magnitude > 1f)
