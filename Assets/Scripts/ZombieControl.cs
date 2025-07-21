@@ -110,7 +110,6 @@ public class ZombieControl : MonoBehaviour
 
         bool isMoving = agent.velocity.magnitude > 0.1f;
         animator.SetBool("isWalking", isMoving);
-        //animator.SetFloat("MoveSpeed", agent.velocity.magnitude);
     }
 
     void ChasePlayer(float distance)
@@ -124,7 +123,6 @@ public class ZombieControl : MonoBehaviour
             agent.isStopped = true;
             agent.ResetPath();
             FacePlayer();
-            //UpdateAudio("Attack");
         }
         else
         {
