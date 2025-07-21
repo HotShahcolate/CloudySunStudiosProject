@@ -85,7 +85,7 @@ public class SwordCollector : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Reset the throw bool so it's "sticky" — lasts only one frame
+        // Reset the throw bool so it's "sticky" ï¿½ lasts only one frame
         if (doSlash)
         {
             animator.SetBool("slash", true);
