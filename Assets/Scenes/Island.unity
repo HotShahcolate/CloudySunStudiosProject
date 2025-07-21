@@ -19266,6 +19266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caveTeleportPoint: {fileID: 1802536875}
   player: {fileID: 440542925}
+  insufficientChests: {fileID: 0}
+  caveDistance: {fileID: 0}
 --- !u!65 &438922441
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19448,8 +19450,10 @@ MonoBehaviour:
   verticalSpeed: 0
   chestCountText: {fileID: 856974156}
   winTextObject: {fileID: 691882511}
+  insufficientChestsObject: {fileID: 0}
   distanceText: {fileID: 1284941190}
   caveEntrance: {fileID: 1108042784}
+  chestCount: 0
   anim1: {fileID: 1798912492}
   anim2: {fileID: 2071328432}
   anim3: {fileID: 942985833}
@@ -33245,8 +33249,10 @@ MonoBehaviour:
   verticalSpeed: 0
   chestCountText: {fileID: 856974156}
   winTextObject: {fileID: 691882511}
+  insufficientChestsObject: {fileID: 0}
   distanceText: {fileID: 0}
   caveEntrance: {fileID: 0}
+  chestCount: 0
   anim1: {fileID: 1798912492}
   anim2: {fileID: 2071328432}
   anim3: {fileID: 942985833}
@@ -65216,7 +65222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1587780773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -65259,7 +65265,7 @@ MonoBehaviour:
   m_text: Timer Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -65278,7 +65284,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
+  m_TextStyleHashCode: 2426
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -65299,7 +65305,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
