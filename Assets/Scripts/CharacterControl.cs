@@ -43,6 +43,8 @@ public class CharacterControl : MonoBehaviour
     private float currentBlendSpeed = 0f;
 
     private Rigidbody rb;
+    public GameObject sprintPowerUpPanel;
+    public GameObject blockPowerUpPanel;
 
     void Start()
     {
@@ -53,6 +55,7 @@ public class CharacterControl : MonoBehaviour
         chestCount = 0;
         SetCountText();
         winTextObject.SetActive(false);
+        sprintPowerUpPanel.SetActive(false);
     }
 
     void Move2()
@@ -71,6 +74,12 @@ public class CharacterControl : MonoBehaviour
         if (characterControl.chestCount >= 3)
         {
             isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+            if (sprintPowerUpPanel != null)
+            {
+                sprintPowerUpPanel.SetActive(true);
+                Invoke("HideSprintPowerUpPanel", 1.5f);
+            }
+
         }
         float currentSpeed = isRunning ? playerSpeed * 2f : playerSpeed;
 
@@ -111,6 +120,7 @@ public class CharacterControl : MonoBehaviour
         //other.enabled = false;
         if (other.gameObject.CompareTag("Chest1"))
         {
+            other.enabled = false;
             anim1.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
             //other.gameObject.SetActive(false);
@@ -124,46 +134,55 @@ public class CharacterControl : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Chest2"))
         {
+            other.enabled = false;
             anim2.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
         }
         else if (other.gameObject.CompareTag("Chest3"))
         {
+            other.enabled = false;
             anim3.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
         }
         else if (other.gameObject.CompareTag("Chest4"))
         {
+            other.enabled = false;
             anim4.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
         }
         else if (other.gameObject.CompareTag("Chest5"))
         {
+            other.enabled = false;
             anim5.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
         }
         else if (other.gameObject.CompareTag("Chest6"))
         {
+            other.enabled = false;
             anim6.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
         }
         else if (other.gameObject.CompareTag("Chest7"))
         {
+            other.enabled = false;
             anim7.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
         }
         else if (other.gameObject.CompareTag("Chest8"))
         {
+            other.enabled = false;
             anim8.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
         }
         else if (other.gameObject.CompareTag("Chest9"))
         {
+            other.enabled = false;
             anim9.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
         }
         else if (other.gameObject.CompareTag("Chest10"))
         {
+            other.enabled = false;
             anim10.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
         }
@@ -202,4 +221,10 @@ public class CharacterControl : MonoBehaviour
         SetDistanceText();
         Move2();
     }
+
+    void HideSprintPowerUpPanel()
+    {
+        sprintPowerUpPanel.SetActive(false);
+    }
+    
 }

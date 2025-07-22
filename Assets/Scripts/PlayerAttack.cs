@@ -16,7 +16,15 @@ public class PlayerAttack : MonoBehaviour
 
     private float blockBlendVelocity = 0f;
     public bool isCountering = false;
-
+    public GameObject blockPowerUpPanel;
+    private bool hasShownBlockPowerUp = false;
+    void Start()
+    {
+        if (blockPowerUpPanel != null)
+        {
+            blockPowerUpPanel.SetActive(false);
+        }
+    }
 
     void Update()
     {
@@ -30,17 +38,19 @@ public class PlayerAttack : MonoBehaviour
                 Debug.Log("Swinging Triggered!");
                 animator.ResetTrigger(swingTriggerName);
                 animator.SetTrigger(swingTriggerName);
-            } else
+            }
+            else
             {
                 Debug.Log("Animator not found!");
 
             }
-            
+
         }
 
         CharacterControl characterControl = GetComponent<CharacterControl>();
         if (characterControl.chestCount >= 2)
         {
+            ShowBlockPowerUp();
             if (Input.GetKeyDown(BlockKey) || Input.GetMouseButtonDown(1))
             {
                 // 1. Trigger attack animation
@@ -49,6 +59,7 @@ public class PlayerAttack : MonoBehaviour
                     //isCountering = true;    
                     Debug.Log("Blocking Triggered!");
                     animator.SetBool("block", isCountering);
+
                 }
                 else
                 {
@@ -63,7 +74,7 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-            float targetBlend = isCountering ? 1.0f : 0.0f;
+        float targetBlend = isCountering ? 1.0f : 0.0f;
         float currentBlend = animator.GetFloat("Blocking");
         float smoothBlend = Mathf.SmoothDamp(currentBlend, targetBlend, ref blockBlendVelocity, 0.1f);
         animator.SetFloat("Blocking", smoothBlend);
@@ -87,8 +98,8 @@ public class PlayerAttack : MonoBehaviour
             Attack(attackDamage, swingSound);
         }
 
-        
-        
+
+
 
     }
 
@@ -117,4 +128,25 @@ public class PlayerAttack : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
+    void ShowBlockPowerUp()
+{
+    CharacterControl characterControl = GetComponent<CharacterControl>();
+
+    if (!hasShownBlockPowerUp && characterControl != null && characterControl.chestCount >= 2 && blockPowerUpPanel != null)
+    {
+        blockPowerUpPanel.SetActive(true);
+        Invoke("HideBlockPowerUpPanel", 2f);
+        hasShownBlockPowerUp = true; 
+    }
+}
+    void HideBlockPowerUpPanel()
+    {
+        if (blockPowerUpPanel != null)
+        {
+            blockPowerUpPanel.SetActive(false);
+           
+        }
+    }
+    
+    
 }

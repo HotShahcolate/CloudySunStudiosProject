@@ -3,14 +3,20 @@ using UnityEngine;
 
 public class TeleportToCave : MonoBehaviour
 {
-    public Transform caveTeleportPoint;  
+    public Transform caveTeleportPoint;
     public GameObject player;
     public GameObject insufficientChests;
     public GameObject caveDistance;
+    public GameObject level2Panel;
+
+    void Start()
+    {
+        level2Panel.SetActive(false);
+    }
     private void OnTriggerEnter(Collider other)
     {
         CharacterControl control = other.GetComponent<CharacterControl>();
-        if (control.chestCount < 5 )
+        if (control.chestCount < 5)
         {
             insufficientChests.SetActive(true);
             StartCoroutine(DelayText());
@@ -28,6 +34,11 @@ public class TeleportToCave : MonoBehaviour
             player.GetComponent<Rigidbody>().useGravity = true;
             caveDistance.SetActive(false);
         }
+        if (level2Panel != null)
+        {
+            level2Panel.SetActive(true);
+            Invoke("HideLevel2Panel", 4f);
+        }
     }
 
     IEnumerator DelayText()
@@ -35,5 +46,10 @@ public class TeleportToCave : MonoBehaviour
         yield return new WaitForSeconds(5);
         insufficientChests.SetActive(false);
 
+    }
+
+    void HideLevel2Panel()
+    {
+        level2Panel.SetActive(false);
     }
 }
