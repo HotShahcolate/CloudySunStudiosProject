@@ -34,7 +34,10 @@ public class CharacterControl : MonoBehaviour
     public Animator anim8;
     public Animator anim9;
     public Animator anim10;
+    public Animator anim11;
     public int totalChestCount;
+
+    public GameObject collectSword;
 
     public float accel = 2f;
     public float decel = 4f;
@@ -49,6 +52,7 @@ public class CharacterControl : MonoBehaviour
     void Start()
     {
         insufficientChestsObject.SetActive(false);
+        collectSword.SetActive(false);
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
@@ -186,6 +190,12 @@ public class CharacterControl : MonoBehaviour
             anim10.SetTrigger("Open");
             StartCoroutine(DelayAction(1, other));
         }
+        else if (other.gameObject.CompareTag("Chest0"))
+        {
+            other.enabled = false;
+            anim11.SetTrigger("Open");
+            StartCoroutine(DelayAction(1, other));
+        }
     }
     IEnumerator DelayAction(float delayTime, Collider other)
     {
@@ -193,6 +203,17 @@ public class CharacterControl : MonoBehaviour
         other.gameObject.SetActive(false);
         chestCount += .5f;
         SetCountText();
+        if (other.gameObject.CompareTag("Chest0"))
+        {
+            collectSword.SetActive(true);
+        }
+
+    }
+
+    void HideSwordImage()
+    {
+        collectSword.SetActive(true);
+        //swordImage.SetActive(true);
     }
 
     void SetCountText()

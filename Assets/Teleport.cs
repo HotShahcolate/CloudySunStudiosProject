@@ -33,11 +33,11 @@ public class TeleportToCave : MonoBehaviour
             player.GetComponent<Rigidbody>().MovePosition(caveTeleportPoint.position);
             player.GetComponent<Rigidbody>().useGravity = true;
             caveDistance.SetActive(false);
-        }
-        if (level2Panel != null)
-        {
-            level2Panel.SetActive(true);
-            Invoke("HideLevel2Panel", 4f);
+            if (level2Panel != null)
+            {
+                level2Panel.SetActive(true);
+                Invoke("HideLevel2Panel", 4f);
+            }
         }
     }
 
