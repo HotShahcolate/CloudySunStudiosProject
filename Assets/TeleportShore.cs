@@ -13,7 +13,15 @@ public class TeleportToShore : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        
+        TutorialManager tutorial = FindObjectOfType<TutorialManager>();
+        if (tutorial != null)
+        {
+            tutorial.tutorialActive = false;
+            tutorial.HideAllTutorialUI();
+            tutorial.CancelInvoke();
+
+        }
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         CharacterControl control = player.GetComponent<CharacterControl>();

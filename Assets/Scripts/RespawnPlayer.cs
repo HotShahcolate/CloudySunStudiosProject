@@ -3,6 +3,18 @@ using UnityEngine;
 public class RespawnPlayer : MonoBehaviour
 {
     public Transform respawnPoint;
+    public Transform newRespawnPoint;
+    public Transform distanceCheckPoint;
+    private bool hasUpdatedRespawn = false;
+
+    void Update()
+    {
+        if (!hasUpdatedRespawn && Vector3.Distance(transform.position, distanceCheckPoint.position) >= 197f)
+        {
+            respawnPoint = newRespawnPoint;
+            hasUpdatedRespawn = true;
+        }
+    }
 
     public void Respawn()
     {

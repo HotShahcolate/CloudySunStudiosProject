@@ -14113,6 +14113,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 730435106203183481, guid: 41ca15a15c560254c90d488125372181, type: 3}
   m_PrefabInstance: {fileID: 1532511104}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &258150669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 258150670}
+  m_Layer: 0
+  m_Name: DistanceCheckPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &258150670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258150669}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.2, y: 7.9, z: 94.84}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &258561436 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1429048533803886147, guid: 6ae6e104640183341b60c6af177d4329, type: 3}
@@ -21526,6 +21557,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 1748142936}
+  newRespawnPoint: {fileID: 928249706}
+  distanceCheckPoint: {fileID: 258150670}
 --- !u!114 &440542933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44791,7 +44824,7 @@ GameObject:
   - component: {fileID: 928249708}
   - component: {fileID: 928249707}
   m_Layer: 0
-  m_Name: Respawn Point (1)
+  m_Name: Respawn Point 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66418,7 +66451,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -28.214268, y: -1.9000244, z: 0.74}
-  m_LocalScale: {x: 1.4285715, y: 30, z: 40}
+  m_LocalScale: {x: 1.4285715, y: 30, z: 35}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1521413328}
@@ -79775,6 +79808,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
+  newRespawnPoint: {fileID: 0}
+  distanceCheckPoint: {fileID: 0}
 --- !u!1001 &1650544226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90072,6 +90107,7 @@ MonoBehaviour:
   attackImage: {fileID: 869263385}
   fogImage: {fileID: 1626178425}
   endImage: {fileID: 1425107596}
+  tutorialActive: 1
 --- !u!4 &1935558365
 Transform:
   m_ObjectHideFlags: 0
@@ -100080,3 +100116,4 @@ SceneRoots:
   - {fileID: 1958831011}
   - {fileID: 1935558365}
   - {fileID: 1057040773}
+  - {fileID: 258150670}

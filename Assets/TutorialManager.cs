@@ -13,6 +13,9 @@ public class TutorialManager : MonoBehaviour
     private bool swordPickedUp = false;
     private bool hasAttacked = false;
 
+    public bool tutorialActive = true;
+
+
     void Start()
     {
 
@@ -26,6 +29,8 @@ public class TutorialManager : MonoBehaviour
 
     void Update()
     {
+         if (!tutorialActive) return;
+
         if (!hasMoved)
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
@@ -53,9 +58,10 @@ public class TutorialManager : MonoBehaviour
             {
                 hasAttacked = true;
                 attackImage.SetActive(false);
-                 Invoke("ShowFogImage", 5f);
+                Invoke("ShowFogImage", 5f);
             }
         }
+        
     }
 
     void ShowChestImage()
@@ -88,8 +94,18 @@ public class TutorialManager : MonoBehaviour
     Invoke("HideEndImage", 5f);
 }
 
-void HideEndImage()
+    void HideEndImage()
+    {
+        endImage.SetActive(false);
+    }
+public void HideAllTutorialUI()
 {
+    welcomeImage.SetActive(false);
+    chestImage.SetActive(false);
+    swordImage.SetActive(false);
+    attackImage.SetActive(false);
+    fogImage.SetActive(false);
     endImage.SetActive(false);
 }
+
 }
