@@ -9,6 +9,7 @@ public class RespawnPlayer : MonoBehaviour
 
     void Update()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (!hasUpdatedRespawn && Vector3.Distance(transform.position, distanceCheckPoint.position) >= 197f)
         {
             respawnPoint = newRespawnPoint;
