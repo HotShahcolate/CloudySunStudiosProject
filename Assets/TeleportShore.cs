@@ -5,9 +5,23 @@ public class TeleportToShore : MonoBehaviour
     public Transform caveTeleportPoint;
     public GameObject player;
     public GameObject beginPanel;
+
+    void Start()
+    {
+        beginPanel.SetActive(false);
+       
+    }
     private void OnTriggerEnter(Collider other)
     {
+        
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        CharacterControl control = player.GetComponent<CharacterControl>();
+        if (control != null && control.chestCount > 0)
+        {
+            control.chestCount -= 1f;
+            control.SendMessage("SetCountText"); 
+        }
         if (!player.GetComponent<Collider>().enabled)
         {
             player.GetComponent<Collider>().enabled = true;
@@ -20,7 +34,7 @@ public class TeleportToShore : MonoBehaviour
         if (beginPanel != null)
         {
             beginPanel.SetActive(true);
-            Invoke("HideBeginPanel", 3f);
+            Invoke("HideBeginPanel", 2f);
         }
     }
 
