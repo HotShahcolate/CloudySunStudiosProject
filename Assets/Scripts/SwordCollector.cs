@@ -136,4 +136,13 @@ public class SwordCollector : MonoBehaviour
             Debug.LogError("swordHold could not find");
         }
     }
+
+    public void RemoveSword()
+    {
+        if (currSword != null)
+        {
+            Destroy(currSword.gameObject);
+            currSword = null;
+        }
+    }
 }

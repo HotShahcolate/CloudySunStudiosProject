@@ -25,10 +25,13 @@ public class TeleportToShore : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         CharacterControl control = player.GetComponent<CharacterControl>();
+        
         if (control != null && control.chestCount > 0)
         {
             control.chestCount -= 1f;
-            control.SendMessage("SetCountText"); 
+            control.SendMessage("SetCountText");
+
+            
         }
         if (!player.GetComponent<Collider>().enabled)
         {
@@ -38,6 +41,13 @@ public class TeleportToShore : MonoBehaviour
         player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         player.GetComponent<Rigidbody>().MovePosition(caveTeleportPoint.position);
         player.GetComponent<Rigidbody>().useGravity = true;
+
+        SwordCollector collector = player.GetComponent<SwordCollector>();
+
+        if (collector != null)
+        {
+            collector.RemoveSword();
+        }
 
         if (beginPanel != null)
         {
