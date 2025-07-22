@@ -43,6 +43,8 @@ public class CharacterControl : MonoBehaviour
     private float currentBlendSpeed = 0f;
 
     private Rigidbody rb;
+    public GameObject sprintPowerUpPanel;
+    public GameObject blockPowerUpPanel;
 
     void Start()
     {
@@ -53,6 +55,7 @@ public class CharacterControl : MonoBehaviour
         chestCount = 0;
         SetCountText();
         winTextObject.SetActive(false);
+        sprintPowerUpPanel.SetActive(false);
     }
 
     void Move2()
@@ -71,6 +74,12 @@ public class CharacterControl : MonoBehaviour
         if (characterControl.chestCount >= 3)
         {
             isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+            if (sprintPowerUpPanel != null)
+            {
+                sprintPowerUpPanel.SetActive(true);
+                Invoke("HideSprintPowerUpPanel", 1.5f);
+            }
+
         }
         float currentSpeed = isRunning ? playerSpeed * 2f : playerSpeed;
 
@@ -212,4 +221,10 @@ public class CharacterControl : MonoBehaviour
         SetDistanceText();
         Move2();
     }
+
+    void HideSprintPowerUpPanel()
+    {
+        sprintPowerUpPanel.SetActive(false);
+    }
+    
 }
