@@ -16,6 +16,7 @@ TagManager:
   - Chest8
   - Chest9
   - Chest10
+  - Chest0
   layers:
   - Default
   - TransparentFX
