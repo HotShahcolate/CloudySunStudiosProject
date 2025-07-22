@@ -80,7 +80,7 @@ public class ZombieControl : MonoBehaviour
         if (distance <= detectionRadius)
         {
             ChasePlayer(distance);
-            //Debug.Log("Zombie is chasing player!");
+            Debug.Log("Zombie is chasing player!");
         }
         else
         {
