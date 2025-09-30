@@ -14,7 +14,5 @@ Language - C#
 Sully's Adventures is a hack-'n'-slash action-adventure game made in Unity. The protagonist is the shipwrecked Captain Sully. Starting on the shore, he must fight his way through the forest and cave to find all the chests and rid the island of its curse and escape!
 
 ## Demo
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MeQAFFoiqcA?si=LDUjCP2tfFfwsYca" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MeQAFFoiqcA?si=LDUjCP2tfFfwsYca" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+https://www.youtube.com/watch?v=MeQAFFoiqcA
 
